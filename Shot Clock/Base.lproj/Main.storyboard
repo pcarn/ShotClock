@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BF0-3K-c8c">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BF0-3K-c8c" customClass="UIControl">
                                 <rect key="frame" x="0.0" y="653" width="187.66666666666666" height="125"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPX-uM-tk7">
@@ -34,13 +34,20 @@
                                     <constraint firstItem="lPX-uM-tk7" firstAttribute="centerY" secondItem="BF0-3K-c8c" secondAttribute="centerY" id="CYf-Zk-trC"/>
                                     <constraint firstItem="lPX-uM-tk7" firstAttribute="centerX" secondItem="BF0-3K-c8c" secondAttribute="centerX" id="PLQ-wU-p1S"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="resetButtonReleased:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zfv-rR-4Vs"/>
+                                    <action selector="resetButtonTapped:" destination="BYZ-38-t0r" eventType="touchDown" id="RQY-Rw-lTL"/>
+                                </connections>
                             </view>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Pp5-in-cMG">
                                 <rect key="frame" x="140.66666666666666" y="448.66666666666669" width="94" height="29"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="0.47843137250000001" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="stepperChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jnC-aS-t2m"/>
+                                </connections>
                             </stepper>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYo-TA-qG4">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYo-TA-qG4" customClass="UIControl">
                                 <rect key="frame" x="187.66666666666663" y="653" width="187.33333333333337" height="125"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OR-xC-KqG">
@@ -56,8 +63,11 @@
                                     <constraint firstItem="4OR-xC-KqG" firstAttribute="centerY" secondItem="UYo-TA-qG4" secondAttribute="centerY" id="X3e-J2-0eF"/>
                                     <constraint firstItem="4OR-xC-KqG" firstAttribute="centerX" secondItem="UYo-TA-qG4" secondAttribute="centerX" id="X9h-0y-HCc"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="stopButtonTapped:" destination="BYZ-38-t0r" eventType="touchDown" id="JR9-S9-x5A"/>
+                                </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ufm-CR-lHf">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ufm-CR-lHf" customClass="UIControl">
                                 <rect key="frame" x="187.66666666666663" y="653" width="187.33333333333337" height="125"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WD4-DG-w7c">
@@ -73,6 +83,9 @@
                                     <constraint firstItem="WD4-DG-w7c" firstAttribute="centerX" secondItem="Ufm-CR-lHf" secondAttribute="centerX" id="C0c-fl-YKE"/>
                                     <constraint firstItem="WD4-DG-w7c" firstAttribute="centerY" secondItem="Ufm-CR-lHf" secondAttribute="centerY" id="dKo-eR-vfc"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchDown" id="1Xo-AG-ACV"/>
+                                </connections>
                             </view>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmA-rh-1n0" userLabel="Invisible Main part">
                                 <rect key="frame" x="0.0" y="44" width="375" height="609"/>
@@ -113,6 +126,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="timberLabel" destination="WV8-Sc-RVu" id="M0h-dL-EKT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

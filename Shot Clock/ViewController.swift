@@ -20,6 +20,21 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBOutlet weak var timberLabel: UILabel!
+    
+    var seconds = 30 // parameterize this
+    var timer = Timer()
+    var isTimerRunning = false
+    
+    @IBAction func resetButtonTapped(_ sender: Any) {
+    }
+    @IBAction func resetButtonReleased(_ sender: Any) {
+    }
+    @IBAction func stopButtonTapped(_ sender: Any) {
+    }
+    @IBAction func startButtonTapped(_ sender: Any) {
+    }
+    @IBAction func stepperChanged(_ sender: Any) {
+    }
 }
 
