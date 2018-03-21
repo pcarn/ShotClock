@@ -13,7 +13,7 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var stopButton: UIControl!
     @IBOutlet weak var startButton: UIControl!
 
-    let shotClockLength = 30 // parameterize this
+    let shotClockLength = 30.0 // parameterize this
 
     lazy var currentTime = shotClockLength
     var timer = Timer()
@@ -49,7 +49,7 @@ class TimerViewController: UIViewController {
 
     func runTimer() {
         timer = Timer.scheduledTimer(
-                    timeInterval: 1,
+                    timeInterval: 0.1,
                     target: self,
                     selector: (#selector(TimerViewController.decrementTimer)),
                     userInfo: nil,
@@ -60,17 +60,32 @@ class TimerViewController: UIViewController {
     }
 
     @objc func decrementTimer() {
-        currentTime -= 1
+        currentTime -= 0.1
         updateTimer()
     }
 
     func updateTimer() {
-        timerLabel.text = "\(currentTime)"
+        if showTenths() {
+            timerLabel.text = "\(String(format: "%.1f", currentTime))"
+        } else {
+            timerLabel.text = "\(String(format: "%.0f", ceil(currentTime)))"
+        }
+    }
+
+    func showTenths() -> Bool {
+        if true { // nba
+            return currentTime < 5.0
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+        timerLabel.font = UIFont.monospacedDigitSystemFont(
+            ofSize: timerLabel.font.pointSize,
+            weight: UIFont.Weight.light
+        )
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
