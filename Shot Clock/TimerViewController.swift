@@ -13,11 +13,17 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var stopButton: UIControl!
     @IBOutlet weak var startButton: UIControl!
 
-    let shotClockLength = 30.0 // parameterize this
+    let shotClockLength = 7.0 // parameterize this
 
     lazy var currentTime = shotClockLength
     var timer = Timer()
     var isTimerRunning = false
+    var impactFeedbackGenerator : UIImpactFeedbackGenerator? = nil
+    var notificationFeedbackGenerator : UINotificationFeedbackGenerator? = nil
+    enum NotificationType {
+        case onTheSecond
+        case buzzer
+    }
     
     @IBAction func resetButtonTapped(_ sender: Any) {
         timer.invalidate()
@@ -60,16 +66,43 @@ class TimerViewController: UIViewController {
     }
 
     @objc func decrementTimer() {
+        let roundedTime = round(currentTime, toNearest: 0.1)
         currentTime -= 0.1
         updateTimer()
+        if roundedTime <= 5 && roundedTime.truncatingRemainder(dividingBy: 1) == 0 {
+            generateFeedback(type: NotificationType.onTheSecond)
+        }
+        if roundedTime <= 0 {
+            generateFeedback(type: NotificationType.buzzer)
+            timer.invalidate()
+        }
+    }
+
+    func generateFeedback(type: NotificationType) {
+        if type == NotificationType.onTheSecond {
+            impactFeedbackGenerator = UIImpactFeedbackGenerator()
+            impactFeedbackGenerator?.prepare()
+            impactFeedbackGenerator?.impactOccurred()
+            impactFeedbackGenerator = nil
+        } else if type == NotificationType.buzzer {
+            notificationFeedbackGenerator = UINotificationFeedbackGenerator()
+            notificationFeedbackGenerator?.prepare()
+            notificationFeedbackGenerator?.notificationOccurred(UINotificationFeedbackType.error)
+            notificationFeedbackGenerator = nil
+        }
+
     }
 
     func updateTimer() {
         if showTenths() {
             timerLabel.text = "\(String(format: "%.1f", currentTime))"
         } else {
-            timerLabel.text = "\(String(format: "%.0f", ceil(currentTime)))"
+            timerLabel.text = "\(String(format: "%.0f", ceil(round(currentTime, toNearest: 0.1))))"
         }
+    }
+
+    func round(_ value: Double, toNearest: Double) -> Double {
+        return Darwin.round(value / toNearest) * toNearest
     }
 
     func showTenths() -> Bool {
