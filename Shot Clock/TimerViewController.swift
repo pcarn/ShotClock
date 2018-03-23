@@ -12,8 +12,10 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var stopButton: UIControl!
     @IBOutlet weak var startButton: UIControl!
+    @IBOutlet var mainView: UIView!
 
-    let shotClockLength = 7.0 // parameterize this
+    let shotClockLength = 30.0 // parameterize this
+//    let orangeColor = UIColor(red: 253/255.0, green: 122/255.0, blue: 46/255.0, alpha: 1.0)
 
     lazy var currentTime = shotClockLength
     var timer = Timer()
@@ -66,38 +68,44 @@ class TimerViewController: UIViewController {
     }
 
     @objc func decrementTimer() {
-        let roundedTime = round(currentTime, toNearest: 0.1)
         currentTime -= 0.1
+        let roundedTime = round(currentTime, toNearest: 0.1)
+        if roundedTime <= 0 {
+            currentTime = 0 // To prevent "-0.0"
+            timer.invalidate()
+            generateFeedback(type: NotificationType.buzzer)
+        }
+
         updateTimer()
         if roundedTime <= 5 && roundedTime.truncatingRemainder(dividingBy: 1) == 0 {
             generateFeedback(type: NotificationType.onTheSecond)
         }
-        if roundedTime <= 0 {
-            generateFeedback(type: NotificationType.buzzer)
-            timer.invalidate()
-        }
+
     }
 
     func generateFeedback(type: NotificationType) {
-        if type == NotificationType.onTheSecond {
-            impactFeedbackGenerator = UIImpactFeedbackGenerator()
-            impactFeedbackGenerator?.prepare()
-            impactFeedbackGenerator?.impactOccurred()
-            impactFeedbackGenerator = nil
-        } else if type == NotificationType.buzzer {
-            notificationFeedbackGenerator = UINotificationFeedbackGenerator()
-            notificationFeedbackGenerator?.prepare()
-            notificationFeedbackGenerator?.notificationOccurred(UINotificationFeedbackType.error)
-            notificationFeedbackGenerator = nil
+        DispatchQueue.main.async {
+            if type == NotificationType.onTheSecond {
+                self.impactFeedbackGenerator = UIImpactFeedbackGenerator()
+                self.impactFeedbackGenerator?.prepare()
+                self.impactFeedbackGenerator?.impactOccurred()
+                self.impactFeedbackGenerator = nil
+            } else if type == NotificationType.buzzer {
+                self.notificationFeedbackGenerator = UINotificationFeedbackGenerator()
+                self.notificationFeedbackGenerator?.prepare()
+                self.notificationFeedbackGenerator?.notificationOccurred(UINotificationFeedbackType.error)
+                self.notificationFeedbackGenerator = nil
+            }
         }
-
     }
 
     func updateTimer() {
-        if showTenths() {
-            timerLabel.text = "\(String(format: "%.1f", currentTime))"
-        } else {
-            timerLabel.text = "\(String(format: "%.0f", ceil(round(currentTime, toNearest: 0.1))))"
+        DispatchQueue.main.async {
+            if self.showTenths() {
+                self.timerLabel.text = "\(String(format: "%.1f", self.currentTime))"
+            } else {
+                self.timerLabel.text = "\(String(format: "%.0f", ceil(self.round(self.currentTime, toNearest: 0.1))))"
+            }
         }
     }
 
@@ -119,6 +127,7 @@ class TimerViewController: UIViewController {
             ofSize: timerLabel.font.pointSize,
             weight: UIFont.Weight.light
         )
+        timerLabel.text = "\(String(format: "%.0f", currentTime))"
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {

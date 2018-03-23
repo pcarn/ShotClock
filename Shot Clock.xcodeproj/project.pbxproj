@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63D205EC0E50008778E /* AppDelegate.swift */; };
-		1793B640205EC0E50008778E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63F205EC0E50008778E /* ViewController.swift */; };
+		1793B640205EC0E50008778E /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63F205EC0E50008778E /* TimerViewController.swift */; };
 		1793B643205EC0E50008778E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1793B641205EC0E50008778E /* Main.storyboard */; };
 		1793B645205EC0E50008778E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1793B644205EC0E50008778E /* Assets.xcassets */; };
 		1793B648205EC0E50008778E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1793B646205EC0E50008778E /* LaunchScreen.storyboard */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		1793B63A205EC0E50008778E /* Shot Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shot Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1793B63D205EC0E50008778E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1793B63F205EC0E50008778E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1793B63F205EC0E50008778E /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		1793B642205EC0E50008778E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1793B644205EC0E50008778E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1793B647205EC0E50008778E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,6 +74,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1714DF07206486F4001071A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1793B631205EC0E50008778E = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +88,7 @@
 				1793B651205EC0E60008778E /* Shot ClockTests */,
 				1793B65C205EC0E60008778E /* Shot ClockUITests */,
 				1793B63B205EC0E50008778E /* Products */,
+				1714DF07206486F4001071A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				1793B63D205EC0E50008778E /* AppDelegate.swift */,
-				1793B63F205EC0E50008778E /* ViewController.swift */,
+				1793B63F205EC0E50008778E /* TimerViewController.swift */,
 				1793B641205EC0E50008778E /* Main.storyboard */,
 				1793B644205EC0E50008778E /* Assets.xcassets */,
 				1793B646205EC0E50008778E /* LaunchScreen.storyboard */,
@@ -194,6 +202,11 @@
 					1793B639205EC0E50008778E = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					1793B64D205EC0E60008778E = {
 						CreatedOnToolsVersion = 9.2;
@@ -259,7 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1793B640205EC0E50008778E /* ViewController.swift in Sources */,
+				1793B640205EC0E50008778E /* TimerViewController.swift in Sources */,
 				1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,7 +444,7 @@
 				INFOPLIST_FILE = "Shot Clock/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pcarn.Shot-Clock";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -447,7 +460,7 @@
 				INFOPLIST_FILE = "Shot Clock/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pcarn.Shot-Clock";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
