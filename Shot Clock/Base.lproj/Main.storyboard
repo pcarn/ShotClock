@@ -92,12 +92,12 @@
                                 <color key="textColor" red="1" green="0.47843137250000001" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Pp5-in-cMG">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Pp5-in-cMG">
                                 <rect key="frame" x="113" y="281" width="94" height="29"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="0.47843137250000001" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <action selector="stepperChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jnC-aS-t2m"/>
+                                    <action selector="stepperChangedWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="0fz-k5-Fmf"/>
                                 </connections>
                             </stepper>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdZ-DX-OhI" userLabel="Spacer">
@@ -110,6 +110,9 @@
                                 <state key="normal" title="14s">
                                     <color key="titleColor" red="1" green="0.47843137250000001" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="setToArbitaryAmountButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NK9-dw-65V"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exT-T9-9n4">
                                 <rect key="frame" x="233" y="20" width="67" height="34"/>
@@ -159,6 +162,7 @@
                     <connections>
                         <outlet property="mainView" destination="8bC-Xf-vdC" id="X1Z-Gy-t6e"/>
                         <outlet property="startButton" destination="Ufm-CR-lHf" id="Rxi-AC-LZh"/>
+                        <outlet property="stepper" destination="Pp5-in-cMG" id="yJf-f8-xzB"/>
                         <outlet property="stopButton" destination="UYo-TA-qG4" id="yVt-Rs-5eN"/>
                         <outlet property="timerLabel" destination="WV8-Sc-RVu" id="8Ly-YA-50n"/>
                     </connections>

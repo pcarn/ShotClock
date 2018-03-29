@@ -7,21 +7,23 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class TimerViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var stopButton: UIControl!
     @IBOutlet weak var startButton: UIControl!
+    @IBOutlet weak var stepper: UIStepper!
     @IBOutlet var mainView: UIView!
 
-    let shotClockLength = 30.0 // parameterize this
+    let shotClockLength = 7.0 // parameterize this
+    let showTenthsUnder = 3.0
 //    let orangeColor = UIColor(red: 253/255.0, green: 122/255.0, blue: 46/255.0, alpha: 1.0)
 
     lazy var currentTime = shotClockLength
     var timer = Timer()
     var isTimerRunning = false
     var impactFeedbackGenerator : UIImpactFeedbackGenerator? = nil
-    var notificationFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     enum NotificationType {
         case onTheSecond
         case buzzer
@@ -29,6 +31,7 @@ class TimerViewController: UIViewController {
     
     @IBAction func resetButtonTapped(_ sender: Any) {
         timer.invalidate()
+        self.impactFeedbackGenerator = nil
         currentTime = shotClockLength
         updateTimer()
     }
@@ -44,15 +47,34 @@ class TimerViewController: UIViewController {
         isTimerRunning = false
         stopButton.isHidden = true
         startButton.isHidden = false
+        stepper.isEnabled = true
+        stepper.alpha = 1.0
     }
 
     @IBAction func startButtonTapped(_ sender: Any) {
         runTimer()
         startButton.isHidden = true
         stopButton.isHidden = false
+        stepper.isEnabled = false
+        stepper.alpha = 0.3
     }
 
-    @IBAction func stepperChanged(_ sender: Any) {
+    @IBAction func stepperChanged(sender: UIStepper) {
+        if self.round(sender.value, toNearest: 0.1) <= showTenthsUnder {
+            currentTime = sender.value
+        } else {
+            currentTime = ceil(self.round(currentTime, toNearest: 0.1)) + (sender.value < currentTime ? -1.0 : 1.0)
+
+            if currentTime > shotClockLength {
+                currentTime = shotClockLength
+            }
+        }
+
+        updateTimer()
+    }
+
+    @IBAction func setToArbitaryAmountButtonTapped(_ sender: Any) {
+        NSLog("set to something")
     }
 
     func runTimer() {
@@ -77,7 +99,7 @@ class TimerViewController: UIViewController {
         }
 
         updateTimer()
-        if roundedTime <= 5 && roundedTime.truncatingRemainder(dividingBy: 1) == 0 {
+        if roundedTime <= showTenthsUnder && roundedTime.truncatingRemainder(dividingBy: 1) == 0 {
             generateFeedback(type: NotificationType.onTheSecond)
         }
 
@@ -86,15 +108,13 @@ class TimerViewController: UIViewController {
     func generateFeedback(type: NotificationType) {
         DispatchQueue.main.async {
             if type == NotificationType.onTheSecond {
-                self.impactFeedbackGenerator = UIImpactFeedbackGenerator()
+                if self.impactFeedbackGenerator == nil {
+                    self.impactFeedbackGenerator = UIImpactFeedbackGenerator()
+                }
                 self.impactFeedbackGenerator?.prepare()
                 self.impactFeedbackGenerator?.impactOccurred()
-                self.impactFeedbackGenerator = nil
             } else if type == NotificationType.buzzer {
-                self.notificationFeedbackGenerator = UINotificationFeedbackGenerator()
-                self.notificationFeedbackGenerator?.prepare()
-                self.notificationFeedbackGenerator?.notificationOccurred(UINotificationFeedbackType.error)
-                self.notificationFeedbackGenerator = nil
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
         }
     }
@@ -106,6 +126,7 @@ class TimerViewController: UIViewController {
             } else {
                 self.timerLabel.text = "\(String(format: "%.0f", ceil(self.round(self.currentTime, toNearest: 0.1))))"
             }
+            self.stepper.value = self.currentTime
         }
     }
 
@@ -114,9 +135,7 @@ class TimerViewController: UIViewController {
     }
 
     func showTenths() -> Bool {
-        if true { // nba
-            return currentTime < 5.0
-        }
+        return currentTime < showTenthsUnder
     }
 
     override func viewDidLoad() {
@@ -127,7 +146,11 @@ class TimerViewController: UIViewController {
             ofSize: timerLabel.font.pointSize,
             weight: UIFont.Weight.light
         )
-        timerLabel.text = "\(String(format: "%.0f", currentTime))"
+        updateTimer()
+        self.stepper.minimumValue = 0
+        self.stepper.maximumValue = shotClockLength
+        self.stepper.stepValue = 0.1
+        self.stepper.value = currentTime
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
