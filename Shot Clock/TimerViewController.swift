@@ -15,9 +15,11 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var startButton: UIControl!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet var mainView: UIView!
+    @IBOutlet weak var arbitraryValueButton: UIButton!
 
-    let shotClockLength = 7.0 // parameterize this
-    let showTenthsUnder = 3.0
+    let shotClockLength = 30.0 // parameterize this
+    let showTenthsUnder = 5.0
+    let arbitraryValue = 14.0
 //    let orangeColor = UIColor(red: 253/255.0, green: 122/255.0, blue: 46/255.0, alpha: 1.0)
 
     lazy var currentTime = shotClockLength
@@ -49,6 +51,8 @@ class TimerViewController: UIViewController {
         startButton.isHidden = false
         stepper.isEnabled = true
         stepper.alpha = 1.0
+        arbitraryValueButton.isEnabled = true
+        arbitraryValueButton.alpha = 1.0
     }
 
     @IBAction func startButtonTapped(_ sender: Any) {
@@ -57,6 +61,8 @@ class TimerViewController: UIViewController {
         stopButton.isHidden = false
         stepper.isEnabled = false
         stepper.alpha = 0.3
+        arbitraryValueButton.isEnabled = false
+        arbitraryValueButton.alpha = 0.3
     }
 
     @IBAction func stepperChanged(sender: UIStepper) {
@@ -74,7 +80,8 @@ class TimerViewController: UIViewController {
     }
 
     @IBAction func setToArbitaryAmountButtonTapped(_ sender: Any) {
-        NSLog("set to something")
+        currentTime = arbitraryValue
+        updateTimer()
     }
 
     func runTimer() {
@@ -147,10 +154,12 @@ class TimerViewController: UIViewController {
             weight: UIFont.Weight.light
         )
         updateTimer()
-        self.stepper.minimumValue = 0
-        self.stepper.maximumValue = shotClockLength
-        self.stepper.stepValue = 0.1
-        self.stepper.value = currentTime
+        stepper.minimumValue = 0
+        stepper.maximumValue = shotClockLength
+        stepper.stepValue = 0.1
+        stepper.value = currentTime
+
+        arbitraryValueButton.setTitle("\(String(format: "%.0f", Darwin.round(arbitraryValue)))s", for: .normal)
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
