@@ -14,7 +14,7 @@
 		1793B648205EC0E50008778E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1793B646205EC0E50008778E /* LaunchScreen.storyboard */; };
 		1793B653205EC0E60008778E /* Shot_ClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B652205EC0E60008778E /* Shot_ClockTests.swift */; };
 		1793B65E205EC0E60008778E /* Shot_ClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B65D205EC0E60008778E /* Shot_ClockUITests.swift */; };
-		17BDE7BD206EDB3400958312 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BDE7BC206EDB3400958312 /* Configuration.swift */; };
+		17BDE7BD206EDB3400958312 /* ShotClockConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */; };
 		17CF5775206DE2D100D05E64 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CF5774206DE2D100D05E64 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +49,7 @@
 		1793B659205EC0E60008778E /* Shot ClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shot ClockUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1793B65D205EC0E60008778E /* Shot_ClockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot_ClockUITests.swift; sourceTree = "<group>"; };
 		1793B65F205EC0E60008778E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17BDE7BC206EDB3400958312 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotClockConfiguration.swift; sourceTree = "<group>"; };
 		17CF5774206DE2D100D05E64 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,7 +109,7 @@
 		1793B63C205EC0E50008778E /* Shot Clock */ = {
 			isa = PBXGroup;
 			children = (
-				17BDE7BC206EDB3400958312 /* Configuration.swift */,
+				17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */,
 				1793B641205EC0E50008778E /* Main.storyboard */,
 				1793B63D205EC0E50008778E /* AppDelegate.swift */,
 				1793B63F205EC0E50008778E /* TimerViewController.swift */,
@@ -280,7 +280,7 @@
 			files = (
 				1793B640205EC0E50008778E /* TimerViewController.swift in Sources */,
 				1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */,
-				17BDE7BD206EDB3400958312 /* Configuration.swift in Sources */,
+				17BDE7BD206EDB3400958312 /* ShotClockConfiguration.swift in Sources */,
 				17CF5775206DE2D100D05E64 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

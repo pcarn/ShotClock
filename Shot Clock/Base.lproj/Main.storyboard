@@ -104,14 +104,14 @@
                                 <rect key="frame" x="0.0" y="309.5" width="320" height="50.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKH-lA-O7T" userLabel="Arbitary Value Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKH-lA-O7T" userLabel="Middle Reset Amount Button">
                                 <rect key="frame" x="144.5" y="316" width="32" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="14s">
                                     <color key="titleColor" red="1" green="0.47843137250000001" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="setToArbitaryAmountButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NK9-dw-65V"/>
+                                    <action selector="middleResetAmountButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uVo-4m-EXO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exT-T9-9n4">
@@ -163,8 +163,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="arbitraryValueButton" destination="fKH-lA-O7T" id="P39-o4-K3I"/>
                         <outlet property="mainView" destination="8bC-Xf-vdC" id="X1Z-Gy-t6e"/>
+                        <outlet property="middleResetAmountButton" destination="fKH-lA-O7T" id="ZfW-gU-WRg"/>
+                        <outlet property="settingsButton" destination="exT-T9-9n4" id="NgX-xA-vwC"/>
                         <outlet property="startButton" destination="Ufm-CR-lHf" id="Rxi-AC-LZh"/>
                         <outlet property="stepper" destination="Pp5-in-cMG" id="yJf-f8-xzB"/>
                         <outlet property="stopButton" destination="UYo-TA-qG4" id="yVt-Rs-5eN"/>

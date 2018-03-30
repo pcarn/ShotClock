@@ -9,6 +9,9 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    var delegate: isAbleToSetLeague?
+    var league: ShotClockConfiguration.League?
+
     @IBOutlet weak var shotClockLengthLabel: UILabel!
     @IBOutlet weak var middleResetLabel: UILabel!
     @IBOutlet weak var copyrightNotice: UILabel!
@@ -26,13 +29,16 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction func leagueChanged(_ sender: UISegmentedControl) {
+        let league = ShotClockConfiguration.League(rawValue: sender.selectedSegmentIndex)!
+        changeLeague(newLeague: league)
+        delegate?.changeLeague(selectedLeague: league)
         UserDefaults.standard.set(sender.selectedSegmentIndex, forKey: "leagueSetting")
-        changeLeague(league: ShotClockConfiguration.League(rawValue: sender.selectedSegmentIndex)!)
     }
 
-    func changeLeague(league: ShotClockConfiguration.League) {
-        let config: ShotClockConfiguration.Configuration = ShotClockConfiguration.leagueConfiguration[league.rawValue]!
+    func changeLeague(newLeague: ShotClockConfiguration.League) {
+        let config: ShotClockConfiguration.Configuration = ShotClockConfiguration.leagueConfiguration(league: newLeague)
 
+        league = newLeague
         shotClockLengthLabel.text = "\(config.shotClockLength)"
         middleResetLabel.text = "\(config.middleResetAmount)"
         instructionTextView.text = config.instructions
@@ -44,10 +50,10 @@ class SettingsViewController: UIViewController {
         instructionTextView.isScrollEnabled = false
         instructionTextView.isScrollEnabled = true // Setting content offset to zero only works if we do this
         if let league = ShotClockConfiguration.League(rawValue: UserDefaults.standard.integer(forKey: "leagueSetting")) {
-            changeLeague(league: league)
+            changeLeague(newLeague: league)
             leagueChooser.selectedSegmentIndex = league.rawValue
         } else {
-            changeLeague(league: ShotClockConfiguration.League.ncaa)
+            changeLeague(newLeague: ShotClockConfiguration.League.ncaa)
             leagueChooser.selectedSegmentIndex = ShotClockConfiguration.League.ncaa.rawValue
         }
 

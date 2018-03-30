@@ -9,21 +9,22 @@
 import UIKit
 import AudioToolbox
 
-protocol isAbleToReceiveData {
-    func pass(data: [String: String])
+protocol isAbleToSetLeague {
+    func changeLeague(selectedLeague: ShotClockConfiguration.League)
 }
 
-class TimerViewController: UIViewController {
+class TimerViewController: UIViewController, isAbleToSetLeague {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var stopButton: UIControl!
     @IBOutlet weak var startButton: UIControl!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet var mainView: UIView!
-    @IBOutlet weak var arbitraryValueButton: UIButton!
+    @IBOutlet weak var middleResetAmountButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
 
-    let shotClockLength = 30.0 // parameterize this
+    var shotClockLength = 30.0 // parameterize this
+    var middleResetAmount = 14.0
     let showTenthsUnder = 5.0
-    let arbitraryValue = 14.0
 //    let orangeColor = UIColor(red: 253/255.0, green: 122/255.0, blue: 46/255.0, alpha: 1.0)
 
     lazy var currentTime = shotClockLength
@@ -53,20 +54,23 @@ class TimerViewController: UIViewController {
         isTimerRunning = false
         stopButton.isHidden = true
         startButton.isHidden = false
-        stepper.isEnabled = true
-        stepper.alpha = 1.0
-        arbitraryValueButton.isEnabled = true
-        arbitraryValueButton.alpha = 1.0
+        let controls: Array<UIControl> = [stepper, middleResetAmountButton, settingsButton]
+        for control in controls {
+            control.isEnabled = true
+            control.alpha = 1.0
+        }
+        self.impactFeedbackGenerator = nil
     }
 
     @IBAction func startButtonTapped(_ sender: Any) {
         runTimer()
         startButton.isHidden = true
         stopButton.isHidden = false
-        stepper.isEnabled = false
-        stepper.alpha = 0.3
-        arbitraryValueButton.isEnabled = false
-        arbitraryValueButton.alpha = 0.3
+        let controls: Array<UIControl> = [stepper, middleResetAmountButton, settingsButton]
+        for control in controls {
+            control.isEnabled = false
+            control.alpha = 0.3
+        }
     }
 
     @IBAction func stepperChanged(sender: UIStepper) {
@@ -83,8 +87,8 @@ class TimerViewController: UIViewController {
         updateTimer()
     }
 
-    @IBAction func setToArbitaryAmountButtonTapped(_ sender: Any) {
-        currentTime = arbitraryValue
+    @IBAction func middleResetAmountButtonTapped(_ sender: Any) {
+        currentTime = middleResetAmount
         updateTimer()
     }
 
@@ -148,7 +152,15 @@ class TimerViewController: UIViewController {
     func showTenths() -> Bool {
         return currentTime < showTenthsUnder
     }
-    
+
+    func changeLeague(selectedLeague: ShotClockConfiguration.League) {
+        let config = ShotClockConfiguration.leagueConfiguration(league: selectedLeague)
+        shotClockLength = Double(config.shotClockLength)
+        middleResetAmount = Double(config.middleResetAmount)
+        middleResetAmountButton.setTitle("\(String(format: "%.0f", Darwin.round(middleResetAmount)))s", for: .normal)
+        currentTime = shotClockLength
+        updateTimer()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,16 +170,28 @@ class TimerViewController: UIViewController {
             ofSize: timerLabel.font.pointSize,
             weight: UIFont.Weight.light
         )
-        updateTimer()
+
+
+        if let league = ShotClockConfiguration.League(rawValue: UserDefaults.standard.integer(forKey: "leagueSetting")) {
+            changeLeague(selectedLeague: league)
+        } else {
+            changeLeague(selectedLeague: ShotClockConfiguration.League.ncaa)
+        }
+
         stepper.minimumValue = 0
         stepper.maximumValue = shotClockLength
         stepper.stepValue = 0.1
         stepper.value = currentTime
-
-        arbitraryValueButton.setTitle("\(String(format: "%.0f", Darwin.round(arbitraryValue)))s", for: .normal)
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is SettingsViewController {
+            let newViewController = segue.destination as! SettingsViewController
+            newViewController.delegate = self
+        }
     }
 }
