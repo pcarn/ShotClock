@@ -9,6 +9,10 @@
 import UIKit
 import AudioToolbox
 
+protocol isAbleToReceiveData {
+    func pass(data: [String: String])
+}
+
 class TimerViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var stopButton: UIControl!
@@ -144,6 +148,7 @@ class TimerViewController: UIViewController {
     func showTenths() -> Bool {
         return currentTime < showTenthsUnder
     }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

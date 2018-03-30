@@ -9,6 +9,11 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    @IBOutlet weak var shotClockLengthLabel: UILabel!
+    @IBOutlet weak var middleResetLabel: UILabel!
+    @IBOutlet weak var copyrightNotice: UILabel!
+    @IBOutlet weak var instructionTextView: UITextView!
+    @IBOutlet weak var leagueChooser: UISegmentedControl!
 
     @IBAction func closeButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -20,9 +25,33 @@ class SettingsViewController: UIViewController {
         NSLog(iosVersion)
     }
 
+    @IBAction func leagueChanged(_ sender: UISegmentedControl) {
+        UserDefaults.standard.set(sender.selectedSegmentIndex, forKey: "leagueSetting")
+        changeLeague(league: ShotClockConfiguration.League(rawValue: sender.selectedSegmentIndex)!)
+    }
+
+    func changeLeague(league: ShotClockConfiguration.League) {
+        let config: ShotClockConfiguration.Configuration = ShotClockConfiguration.leagueConfiguration[league.rawValue]!
+
+        shotClockLengthLabel.text = "\(config.shotClockLength)"
+        middleResetLabel.text = "\(config.middleResetAmount)"
+        instructionTextView.text = config.instructions
+        instructionTextView.contentOffset = CGPoint.zero
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        instructionTextView.isScrollEnabled = false
+        instructionTextView.isScrollEnabled = true // Setting content offset to zero only works if we do this
+        if let league = ShotClockConfiguration.League(rawValue: UserDefaults.standard.integer(forKey: "leagueSetting")) {
+            changeLeague(league: league)
+            leagueChooser.selectedSegmentIndex = league.rawValue
+        } else {
+            changeLeague(league: ShotClockConfiguration.League.ncaa)
+            leagueChooser.selectedSegmentIndex = ShotClockConfiguration.League.ncaa.rawValue
+        }
 
+        copyrightNotice.text = "Copyright © \(Calendar.current.component(.year, from: Date())) Peter Carnesciali"
         // Do any additional setup after loading the view.
     }
 
