@@ -202,11 +202,22 @@
                                 </segments>
                                 <color key="tintColor" red="1" green="0.48424340170000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTk-Wu-bdo">
+                                <rect key="frame" x="107" y="365" width="107" height="30"/>
+                                <state key="normal" title="Send Feedback">
+                                    <color key="titleColor" red="1" green="0.48424340170000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendFeedbackButton:" destination="xKh-Ut-yaN" eventType="touchUpInside" id="NBh-Dc-HLl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="IXj-5E-vEJ" firstAttribute="bottom" secondItem="rTk-Wu-bdo" secondAttribute="bottom" constant="85" id="82o-5i-NmZ"/>
                             <constraint firstItem="qL4-bv-T0I" firstAttribute="centerX" secondItem="Mbl-fD-fdD" secondAttribute="centerX" id="9g8-yB-R2d"/>
                             <constraint firstItem="sAT-MA-tNw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IXj-5E-vEJ" secondAttribute="leading" constant="1" id="Ef8-NL-Ote"/>
+                            <constraint firstItem="rTk-Wu-bdo" firstAttribute="centerX" secondItem="IXj-5E-vEJ" secondAttribute="centerX" id="IHD-0e-dNi"/>
                             <constraint firstItem="IXj-5E-vEJ" firstAttribute="top" secondItem="sAT-MA-tNw" secondAttribute="top" id="OYR-Pl-XiS"/>
                             <constraint firstItem="qL4-bv-T0I" firstAttribute="leading" secondItem="IXj-5E-vEJ" secondAttribute="leading" constant="40" id="dns-lw-lA4"/>
                             <constraint firstItem="qL4-bv-T0I" firstAttribute="top" secondItem="sAT-MA-tNw" secondAttribute="bottom" constant="20" id="eXZ-bj-wlR"/>

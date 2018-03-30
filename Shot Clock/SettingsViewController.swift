@@ -14,6 +14,9 @@ class SettingsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func sendFeedbackButton(_ sender: Any) {
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
