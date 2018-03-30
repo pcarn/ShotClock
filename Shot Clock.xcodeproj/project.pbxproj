@@ -107,9 +107,9 @@
 		1793B63C205EC0E50008778E /* Shot Clock */ = {
 			isa = PBXGroup;
 			children = (
+				1793B641205EC0E50008778E /* Main.storyboard */,
 				1793B63D205EC0E50008778E /* AppDelegate.swift */,
 				1793B63F205EC0E50008778E /* TimerViewController.swift */,
-				1793B641205EC0E50008778E /* Main.storyboard */,
 				17CF5774206DE2D100D05E64 /* SettingsViewController.swift */,
 				1793B644205EC0E50008778E /* Assets.xcassets */,
 				1793B646205EC0E50008778E /* LaunchScreen.storyboard */,
