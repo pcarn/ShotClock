@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, MFMailComposeViewControllerDelegate {
     var delegate: isAbleToSetLeague?
     var league: ShotClockConfiguration.League?
 
@@ -22,10 +23,35 @@ class SettingsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func sendFeedbackButton(_ sender: Any) {
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
         let iosVersion = "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
-        NSLog(deviceName())
-        NSLog(iosVersion)
+
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        mailComposerVC.setToRecipients(["peter@pcarn.com"])
+        mailComposerVC.setSubject("Shot Clock Feedback")
+        mailComposerVC.setMessageBody("\n\n\nDevice: \(deviceName())\niOS Version: \(iosVersion)", isHTML: false)
+
+        return mailComposerVC
+    }
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.", preferredStyle: UIAlertControllerStyle.alert)
+        sendMailErrorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(sendMailErrorAlert, animated: true, completion: nil)
+    }
+
+    @IBAction func sendFeedbackButton(_ sender: Any) {
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
+        }
     }
 
     @IBAction func leagueChanged(_ sender: UISegmentedControl) {
