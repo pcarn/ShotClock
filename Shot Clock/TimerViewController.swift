@@ -182,6 +182,8 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         stepper.maximumValue = shotClockLength
         stepper.stepValue = 0.1
         stepper.value = currentTime
+
+        UIApplication.shared.isIdleTimerDisabled = true
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
