@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBOutlet weak var copyrightNotice: UILabel!
     @IBOutlet weak var instructionTextView: UITextView!
     @IBOutlet weak var leagueChooser: UISegmentedControl!
-
+    @IBOutlet weak var sendFeedbackButton: UIButton!
     @IBAction func closeButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -75,6 +75,11 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         super.viewDidLoad()
         instructionTextView.isScrollEnabled = false
         instructionTextView.isScrollEnabled = true // Setting content offset to zero only works if we do this
+
+        sendFeedbackButton.layer.borderWidth = 1.0
+        sendFeedbackButton.layer.cornerRadius = 8.0
+        sendFeedbackButton.layer.borderColor = sendFeedbackButton.currentTitleColor.cgColor
+
         if let league = ShotClockConfiguration.League(rawValue: UserDefaults.standard.integer(forKey: "leagueSetting")) {
             changeLeague(newLeague: league)
             leagueChooser.selectedSegmentIndex = league.rawValue
