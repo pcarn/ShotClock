@@ -107,7 +107,10 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     }
 
     @IBAction func middleResetAmountButtonTapped(_ sender: Any) {
+        recallAmount = currentTime
         currentTime = middleResetAmount
+        recallButton.isEnabled = true
+        recallButton.alpha = 1.0
         updateTimer()
     }
 
@@ -188,6 +191,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+        timerLabel.adjustsFontSizeToFitWidth = true
         timerLabel.font = UIFont.monospacedDigitSystemFont(
             ofSize: timerLabel.font.pointSize,
             weight: UIFont.Weight.light
