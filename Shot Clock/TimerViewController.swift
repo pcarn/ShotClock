@@ -21,16 +21,17 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var middleResetAmountButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var recallButton: UIButton!
 
+    var timer = Timer()
     var shotClockLength = 30.0 // parameterize this
+    lazy var currentTime = shotClockLength
     var middleResetAmount = 14.0
     let showTenthsUnder = 5.0
-//    let orangeColor = UIColor(red: 253/255.0, green: 122/255.0, blue: 46/255.0, alpha: 1.0)
-
-    lazy var currentTime = shotClockLength
-    var timer = Timer()
     var isTimerRunning = false
     var impactFeedbackGenerator : UIImpactFeedbackGenerator? = nil
+    var recallAmount = -1.0
+
     enum NotificationType {
         case onTheSecond
         case buzzer
@@ -39,8 +40,13 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     @IBAction func resetButtonTapped(_ sender: Any) {
         timer.invalidate()
         self.impactFeedbackGenerator = nil
+        recallAmount = currentTime
         currentTime = shotClockLength
         updateTimer()
+        if !isTimerRunning {
+            recallButton.isEnabled = true
+            recallButton.alpha = 1.0
+        }
     }
 
     @IBAction func resetButtonReleased(_ sender: Any) {
@@ -54,8 +60,11 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         isTimerRunning = false
         stopButton.isHidden = true
         startButton.isHidden = false
-        let controls: Array<UIControl> = [stepper, middleResetAmountButton, settingsButton]
-        for control in controls {
+        var controlsToEnable: Array<UIControl> = [stepper, middleResetAmountButton, settingsButton]
+        if recallAmount != -1.0 {
+            controlsToEnable.append(recallButton)
+        }
+        for control in controlsToEnable {
             control.isEnabled = true
             control.alpha = 1.0
         }
@@ -66,8 +75,8 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         runTimer()
         startButton.isHidden = true
         stopButton.isHidden = false
-        let controls: Array<UIControl> = [stepper, middleResetAmountButton, settingsButton]
-        for control in controls {
+        let controlsToDisable: Array<UIControl> = [stepper, middleResetAmountButton, settingsButton, recallButton]
+        for control in controlsToDisable {
             control.isEnabled = false
             control.alpha = 0.3
         }
@@ -84,6 +93,16 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
             }
         }
 
+        updateTimer()
+    }
+
+    @IBAction func recallButtonTapped(_ sender: Any) {
+        if recallAmount != -1.0 {
+            currentTime = recallAmount
+        }
+        recallAmount = -1.0
+        recallButton.isEnabled = false
+        recallButton.alpha = 0.3
         updateTimer()
     }
 
@@ -150,7 +169,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     }
 
     func showTenths() -> Bool {
-        return currentTime < showTenthsUnder
+        return round(currentTime, toNearest: 0.1) < showTenthsUnder
     }
 
     func changeLeague(selectedLeague: ShotClockConfiguration.League) {
@@ -159,6 +178,9 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         middleResetAmount = Double(config.middleResetAmount)
         middleResetAmountButton.setTitle("\(String(format: "%.0f", Darwin.round(middleResetAmount)))s", for: .normal)
         currentTime = shotClockLength
+        recallAmount = -1.0
+        recallButton.isEnabled = false
+        recallButton.alpha = 0.3
         updateTimer()
     }
 
