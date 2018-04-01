@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1744F9832071949900FA476A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1744F9812071949800FA476A /* Interface.storyboard */; };
+		1744F9852071949A00FA476A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1744F9842071949A00FA476A /* Assets.xcassets */; };
+		1744F98C2071949A00FA476A /* Shot Clock Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1744F98B2071949A00FA476A /* Shot Clock Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1744F9912071949A00FA476A /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744F9902071949A00FA476A /* InterfaceController.swift */; };
+		1744F9932071949A00FA476A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744F9922071949A00FA476A /* ExtensionDelegate.swift */; };
+		1744F9952071949A00FA476A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744F9942071949A00FA476A /* NotificationController.swift */; };
+		1744F9972071949A00FA476A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1744F9962071949A00FA476A /* Assets.xcassets */; };
+		1744F99C2071949A00FA476A /* Shot Clock Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1744F97F2071949800FA476A /* Shot Clock Watch.app */; };
 		1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63D205EC0E50008778E /* AppDelegate.swift */; };
 		1793B640205EC0E50008778E /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63F205EC0E50008778E /* TimerViewController.swift */; };
 		1793B643205EC0E50008778E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1793B641205EC0E50008778E /* Main.storyboard */; };
@@ -19,6 +27,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1744F98D2071949A00FA476A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1793B632205EC0E50008778E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1744F98A2071949A00FA476A;
+			remoteInfo = "Shot Clock Watch Extension";
+		};
+		1744F99A2071949A00FA476A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1793B632205EC0E50008778E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1744F97E2071949800FA476A;
+			remoteInfo = "Shot Clock Watch";
+		};
 		1793B64F205EC0E60008778E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1793B632205EC0E50008778E /* Project object */;
@@ -35,7 +57,43 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1744F9A22071949A00FA476A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1744F98C2071949A00FA476A /* Shot Clock Watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1744F9A42071949A00FA476A /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				1744F99C2071949A00FA476A /* Shot Clock Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1744F97F2071949800FA476A /* Shot Clock Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shot Clock Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1744F9822071949800FA476A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		1744F9842071949A00FA476A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1744F9862071949A00FA476A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1744F98B2071949A00FA476A /* Shot Clock Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Shot Clock Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1744F9902071949A00FA476A /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		1744F9922071949A00FA476A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		1744F9942071949A00FA476A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		1744F9962071949A00FA476A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1744F9982071949A00FA476A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1744F9992071949A00FA476A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		1793B63A205EC0E50008778E /* Shot Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shot Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1793B63D205EC0E50008778E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1793B63F205EC0E50008778E /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +112,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1744F9882071949A00FA476A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1793B637205EC0E50008778E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,12 +150,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1744F9802071949800FA476A /* Shot Clock Watch */ = {
+			isa = PBXGroup;
+			children = (
+				1744F9812071949800FA476A /* Interface.storyboard */,
+				1744F9842071949A00FA476A /* Assets.xcassets */,
+				1744F9862071949A00FA476A /* Info.plist */,
+			);
+			path = "Shot Clock Watch";
+			sourceTree = "<group>";
+		};
+		1744F98F2071949A00FA476A /* Shot Clock Watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1744F9902071949A00FA476A /* InterfaceController.swift */,
+				1744F9922071949A00FA476A /* ExtensionDelegate.swift */,
+				1744F9942071949A00FA476A /* NotificationController.swift */,
+				1744F9962071949A00FA476A /* Assets.xcassets */,
+				1744F9982071949A00FA476A /* Info.plist */,
+				1744F9992071949A00FA476A /* PushNotificationPayload.apns */,
+			);
+			path = "Shot Clock Watch Extension";
+			sourceTree = "<group>";
+		};
 		1793B631205EC0E50008778E = {
 			isa = PBXGroup;
 			children = (
 				1793B63C205EC0E50008778E /* Shot Clock */,
 				1793B651205EC0E60008778E /* Shot ClockTests */,
 				1793B65C205EC0E60008778E /* Shot ClockUITests */,
+				1744F9802071949800FA476A /* Shot Clock Watch */,
+				1744F98F2071949A00FA476A /* Shot Clock Watch Extension */,
 				1793B63B205EC0E50008778E /* Products */,
 				1714DF07206486F4001071A3 /* Frameworks */,
 			);
@@ -102,6 +192,8 @@
 				1793B63A205EC0E50008778E /* Shot Clock.app */,
 				1793B64E205EC0E60008778E /* Shot ClockTests.xctest */,
 				1793B659205EC0E60008778E /* Shot ClockUITests.xctest */,
+				1744F97F2071949800FA476A /* Shot Clock Watch.app */,
+				1744F98B2071949A00FA476A /* Shot Clock Watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,6 +234,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1744F97E2071949800FA476A /* Shot Clock Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1744F9A32071949A00FA476A /* Build configuration list for PBXNativeTarget "Shot Clock Watch" */;
+			buildPhases = (
+				1744F97D2071949800FA476A /* Resources */,
+				1744F9A22071949A00FA476A /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1744F98E2071949A00FA476A /* PBXTargetDependency */,
+			);
+			name = "Shot Clock Watch";
+			productName = "Shot Clock Watch";
+			productReference = 1744F97F2071949800FA476A /* Shot Clock Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		1744F98A2071949A00FA476A /* Shot Clock Watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1744F9A12071949A00FA476A /* Build configuration list for PBXNativeTarget "Shot Clock Watch Extension" */;
+			buildPhases = (
+				1744F9872071949A00FA476A /* Sources */,
+				1744F9882071949A00FA476A /* Frameworks */,
+				1744F9892071949A00FA476A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Shot Clock Watch Extension";
+			productName = "Shot Clock Watch Extension";
+			productReference = 1744F98B2071949A00FA476A /* Shot Clock Watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		1793B639205EC0E50008778E /* Shot Clock */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1793B662205EC0E60008778E /* Build configuration list for PBXNativeTarget "Shot Clock" */;
@@ -149,10 +275,12 @@
 				1793B636205EC0E50008778E /* Sources */,
 				1793B637205EC0E50008778E /* Frameworks */,
 				1793B638205EC0E50008778E /* Resources */,
+				1744F9A42071949A00FA476A /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1744F99B2071949A00FA476A /* PBXTargetDependency */,
 			);
 			name = "Shot Clock";
 			productName = "Shot Clock";
@@ -201,10 +329,18 @@
 		1793B632205EC0E50008778E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Peter Carnesciali";
 				TargetAttributes = {
+					1744F97E2071949800FA476A = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
+					1744F98A2071949A00FA476A = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
 					1793B639205EC0E50008778E = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -242,11 +378,30 @@
 				1793B639205EC0E50008778E /* Shot Clock */,
 				1793B64D205EC0E60008778E /* Shot ClockTests */,
 				1793B658205EC0E60008778E /* Shot ClockUITests */,
+				1744F97E2071949800FA476A /* Shot Clock Watch */,
+				1744F98A2071949A00FA476A /* Shot Clock Watch Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1744F97D2071949800FA476A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1744F9852071949A00FA476A /* Assets.xcassets in Resources */,
+				1744F9832071949900FA476A /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1744F9892071949A00FA476A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1744F9972071949A00FA476A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1793B638205EC0E50008778E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -274,6 +429,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1744F9872071949A00FA476A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1744F9952071949A00FA476A /* NotificationController.swift in Sources */,
+				1744F9932071949A00FA476A /* ExtensionDelegate.swift in Sources */,
+				1744F9912071949A00FA476A /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1793B636205EC0E50008778E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -304,6 +469,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1744F98E2071949A00FA476A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1744F98A2071949A00FA476A /* Shot Clock Watch Extension */;
+			targetProxy = 1744F98D2071949A00FA476A /* PBXContainerItemProxy */;
+		};
+		1744F99B2071949A00FA476A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1744F97E2071949800FA476A /* Shot Clock Watch */;
+			targetProxy = 1744F99A2071949A00FA476A /* PBXContainerItemProxy */;
+		};
 		1793B650205EC0E60008778E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1793B639205EC0E50008778E /* Shot Clock */;
@@ -317,6 +492,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1744F9812071949800FA476A /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1744F9822071949800FA476A /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		1793B641205EC0E50008778E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -336,6 +519,84 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1744F99D2071949A00FA476A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4G9BHF8NH5;
+				IBSC_MODULE = Shot_Clock_Watch_Extension;
+				INFOPLIST_FILE = "Shot Clock Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		1744F99E2071949A00FA476A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4G9BHF8NH5;
+				IBSC_MODULE = Shot_Clock_Watch_Extension;
+				INFOPLIST_FILE = "Shot Clock Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		1744F99F2071949A00FA476A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4G9BHF8NH5;
+				INFOPLIST_FILE = "Shot Clock Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		1744F9A02071949A00FA476A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4G9BHF8NH5;
+				INFOPLIST_FILE = "Shot Clock Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
 		1793B660205EC0E60008778E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -548,6 +809,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1744F9A12071949A00FA476A /* Build configuration list for PBXNativeTarget "Shot Clock Watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1744F99F2071949A00FA476A /* Debug */,
+				1744F9A02071949A00FA476A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1744F9A32071949A00FA476A /* Build configuration list for PBXNativeTarget "Shot Clock Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1744F99D2071949A00FA476A /* Debug */,
+				1744F99E2071949A00FA476A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1793B635205EC0E50008778E /* Build configuration list for PBXProject "Shot Clock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
