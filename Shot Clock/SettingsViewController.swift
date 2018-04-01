@@ -19,6 +19,8 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBOutlet weak var instructionTextView: UITextView!
     @IBOutlet weak var leagueChooser: UISegmentedControl!
     @IBOutlet weak var sendFeedbackButton: UIButton!
+    @IBOutlet weak var versionLabel: UILabel!
+
     @IBAction func closeButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -30,7 +32,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         mailComposerVC.setToRecipients(["peter@pcarn.com"])
         mailComposerVC.setSubject("Shot Clock Feedback")
-        mailComposerVC.setMessageBody("\n\n\nDevice: \(deviceName())\niOS Version: \(iosVersion)", isHTML: false)
+        mailComposerVC.setMessageBody("\n\n\nDevice: \(deviceName())\niOS Version: \(iosVersion)\nApp Version: \(appVersion())", isHTML: false)
 
         return mailComposerVC
     }
@@ -80,6 +82,8 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         instructionTextView.isScrollEnabled = false
         instructionTextView.isScrollEnabled = true // Setting content offset to zero only works if we do this
 
+        versionLabel.text = "v\(appVersion())"
+
         sendFeedbackButton.layer.borderWidth = 1.0
         sendFeedbackButton.layer.cornerRadius = 8.0
         sendFeedbackButton.layer.borderColor = sendFeedbackButton.currentTitleColor.cgColor
@@ -114,6 +118,12 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    func appVersion() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+        return version
     }
 
     func deviceName() -> String {

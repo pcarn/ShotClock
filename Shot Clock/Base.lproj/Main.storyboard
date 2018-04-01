@@ -339,6 +339,7 @@
                         <outlet property="middleResetLabel" destination="Ih6-vh-Db0" id="uhW-gL-b9C"/>
                         <outlet property="sendFeedbackButton" destination="rTk-Wu-bdo" id="17d-Hp-9fo"/>
                         <outlet property="shotClockLengthLabel" destination="Bh6-Kc-1Gb" id="AI2-Ea-X4a"/>
+                        <outlet property="versionLabel" destination="cS2-mR-IBl" id="Eg9-9t-l0z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rT-XN-Ssm" userLabel="First Responder" sceneMemberID="firstResponder"/>
