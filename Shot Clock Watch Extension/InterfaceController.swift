@@ -11,6 +11,11 @@ import Foundation
 
 
 class InterfaceController: WKInterfaceController {
+    @IBOutlet var timerLabel: WKInterfaceLabel!
+
+    @IBAction func resetButtonTapped() {
+        timerLabel.setText("69")
+    }
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
