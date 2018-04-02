@@ -159,9 +159,9 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     func updateTimer() {
         DispatchQueue.main.async {
             if self.showTenths() {
-                self.timerLabel.text = "\(String(format: "%.1f", self.currentTime))"
+                self.timerLabel.text = String(format: "%.1f", self.currentTime)
             } else {
-                self.timerLabel.text = "\(String(format: "%.0f", ceil(self.round(self.currentTime, toNearest: 0.1))))"
+                self.timerLabel.text = String(format: "%.0f", ceil(self.round(self.currentTime, toNearest: 0.1)))
             }
             self.stepper.value = self.currentTime
         }
