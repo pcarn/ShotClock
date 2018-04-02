@@ -12,7 +12,6 @@
 		1744F98C2071949A00FA476A /* Shot Clock Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1744F98B2071949A00FA476A /* Shot Clock Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1744F9912071949A00FA476A /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744F9902071949A00FA476A /* InterfaceController.swift */; };
 		1744F9932071949A00FA476A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744F9922071949A00FA476A /* ExtensionDelegate.swift */; };
-		1744F9952071949A00FA476A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744F9942071949A00FA476A /* NotificationController.swift */; };
 		1744F9972071949A00FA476A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1744F9962071949A00FA476A /* Assets.xcassets */; };
 		1744F99C2071949A00FA476A /* Shot Clock Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1744F97F2071949800FA476A /* Shot Clock Watch.app */; };
 		1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63D205EC0E50008778E /* AppDelegate.swift */; };
@@ -90,10 +89,8 @@
 		1744F98B2071949A00FA476A /* Shot Clock Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Shot Clock Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1744F9902071949A00FA476A /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		1744F9922071949A00FA476A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		1744F9942071949A00FA476A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		1744F9962071949A00FA476A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1744F9982071949A00FA476A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1744F9992071949A00FA476A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		1793B63A205EC0E50008778E /* Shot Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shot Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1793B63D205EC0E50008778E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1793B63F205EC0E50008778E /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -165,10 +162,8 @@
 			children = (
 				1744F9902071949A00FA476A /* InterfaceController.swift */,
 				1744F9922071949A00FA476A /* ExtensionDelegate.swift */,
-				1744F9942071949A00FA476A /* NotificationController.swift */,
 				1744F9962071949A00FA476A /* Assets.xcassets */,
 				1744F9982071949A00FA476A /* Info.plist */,
-				1744F9992071949A00FA476A /* PushNotificationPayload.apns */,
 			);
 			path = "Shot Clock Watch Extension";
 			sourceTree = "<group>";
@@ -433,7 +428,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1744F9952071949A00FA476A /* NotificationController.swift in Sources */,
 				1744F9932071949A00FA476A /* ExtensionDelegate.swift in Sources */,
 				1744F9912071949A00FA476A /* InterfaceController.swift in Sources */,
 			);

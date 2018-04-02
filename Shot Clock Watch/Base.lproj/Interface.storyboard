@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch42" orientation="portrait">
+    <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,7 +16,7 @@
                     <items>
                         <label width="1" height="0.59999999999999998" alignment="center" text="30" textAlignment="center" numberOfLines="0" id="6Jv-QY-MHL">
                             <color key="textColor" red="0.98823529409999999" green="0.47843137250000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="font" type="system" pointSize="113"/>
+                            <fontDescription key="font" type="system" pointSize="102"/>
                         </label>
                         <group width="1" height="0.40000000000000002" alignment="center" verticalAlignment="bottom" id="mJd-uh-ssl">
                             <items>
@@ -25,11 +25,16 @@
                                         <action selector="resetButtonTapped" destination="AgC-eL-Hgc" id="r2t-vg-H39"/>
                                     </connections>
                                 </button>
-                                <button width="0.45000000000000001" height="1" alignment="right" title="Start" id="CoD-Gu-2Gt"/>
+                                <button width="0.45000000000000001" height="1" alignment="right" title="Start" id="CoD-Gu-2Gt">
+                                    <connections>
+                                        <action selector="startStopButtonTapped" destination="AgC-eL-Hgc" id="YBA-bj-Kqd"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                     </items>
                     <connections>
+                        <outlet property="startStopButton" destination="CoD-Gu-2Gt" id="huI-XD-259"/>
                         <outlet property="timerLabel" destination="6Jv-QY-MHL" id="V1K-l3-Pzm"/>
                     </connections>
                 </controller>
