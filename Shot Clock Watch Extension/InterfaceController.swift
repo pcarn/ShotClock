@@ -17,10 +17,11 @@ class InterfaceController: WKInterfaceController {
     let monospacedFont = UIFont.monospacedDigitSystemFont(ofSize: 102.0, weight: .regular)
 
     var timer = Timer()
-    var shotClockLength = 7.0
+    var shotClockLength = 30.0
     lazy var currentTime = shotClockLength
     let showTenthsUnder = 5.0
     var isTimerRunning = false
+    var timeStarted:Date?
 
     enum NotificationType {
         case onTheSecond
@@ -30,16 +31,24 @@ class InterfaceController: WKInterfaceController {
     @IBAction func resetButtonTapped() {
         currentTime = shotClockLength
         updateTimer()
+        if isTimerRunning {
+            timeStarted = Date()
+            if !timer.isValid {
+                runTimer()
+            }
+        }
     }
 
     @IBAction func startStopButtonTapped() {
         if isTimerRunning {
             timer.invalidate()
             isTimerRunning = false
+            timeStarted = nil
             startStopButton.setTitle("Start")
         } else {
             runTimer()
             isTimerRunning = true
+            timeStarted = Date().addingTimeInterval((shotClockLength - currentTime) * -1)
             startStopButton.setTitle("Stop")
         }
     }
@@ -81,7 +90,6 @@ class InterfaceController: WKInterfaceController {
         DispatchQueue.main.async {
             if self.showTenths() {
                 self.timerLabel.setAttributedText(self.monospacedString(string: String(format: "%.1f", self.currentTime)))
-//                self.timerLabel.setText(String(format: "%.1f", self.currentTime))
             } else {
                 self.timerLabel.setAttributedText(
                     self.monospacedString(
@@ -118,10 +126,13 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-//        timerLabel.setFont .font = UIFont.monospacedDigitSystemFont(
-//            ofSize: timerLabel.font.pointSize,
-//            weight: UIFont.Weight.light
-//        )
+        if isTimerRunning {
+            currentTime = shotClockLength - Date().timeIntervalSince(timeStarted!)
+            if currentTime < 0 {
+                currentTime = 0
+            }
+        }
+        updateTimer()
     }
     
     override func didDeactivate() {
