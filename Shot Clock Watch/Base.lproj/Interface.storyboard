@@ -33,6 +33,13 @@
                             </items>
                         </group>
                     </items>
+                    <menu key="menu" id="t8V-F0-bPO">
+                        <items>
+                            <menuItem title="NCAA" icon="more" id="7un-FS-eDF"/>
+                            <menuItem title="NBA" icon="more" id="RqG-St-PS5"/>
+                            <menuItem title="FIBA" icon="more" id="UHx-BN-rOc"/>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="startStopButton" destination="CoD-Gu-2Gt" id="huI-XD-259"/>
                         <outlet property="timerLabel" destination="6Jv-QY-MHL" id="V1K-l3-Pzm"/>
