@@ -35,9 +35,21 @@
                     </items>
                     <menu key="menu" id="t8V-F0-bPO">
                         <items>
-                            <menuItem title="NCAA" icon="more" id="7un-FS-eDF"/>
-                            <menuItem title="NBA" icon="more" id="RqG-St-PS5"/>
-                            <menuItem title="FIBA" icon="more" id="UHx-BN-rOc"/>
+                            <menuItem title="NCAA" icon="more" id="7un-FS-eDF">
+                                <connections>
+                                    <action selector="ncaaOptionTapped" destination="AgC-eL-Hgc" id="aBX-Cp-J6I"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="NBA" icon="more" id="RqG-St-PS5">
+                                <connections>
+                                    <action selector="nbaOptionTapped" destination="AgC-eL-Hgc" id="4sH-p5-zs3"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="FIBA" icon="more" id="UHx-BN-rOc">
+                                <connections>
+                                    <action selector="fibaOptionTapped" destination="AgC-eL-Hgc" id="aPR-Bi-8rS"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                     <connections>

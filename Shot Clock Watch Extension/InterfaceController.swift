@@ -28,6 +28,15 @@ class InterfaceController: WKInterfaceController {
         case buzzer
     }
 
+    @IBAction func ncaaOptionTapped() {
+    }
+
+    @IBAction func nbaOptionTapped() {
+    }
+
+    @IBAction func fibaOptionTapped() {
+    }
+
     @IBAction func resetButtonTapped() {
         currentTime = shotClockLength
         updateTimer()
