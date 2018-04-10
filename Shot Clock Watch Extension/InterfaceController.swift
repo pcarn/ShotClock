@@ -29,12 +29,23 @@ class InterfaceController: WKInterfaceController {
     }
 
     @IBAction func ncaaOptionTapped() {
+        changeLeague(selectedLeague: .ncaa)
     }
 
     @IBAction func nbaOptionTapped() {
+        changeLeague(selectedLeague: .nba)
     }
 
     @IBAction func fibaOptionTapped() {
+        changeLeague(selectedLeague: .fiba)
+    }
+
+    func changeLeague(selectedLeague: ShotClockConfiguration.League) {
+        let config = ShotClockConfiguration.leagueConfiguration(league: selectedLeague)
+        stopTimer()
+        shotClockLength = Double(config.shotClockLength)
+        currentTime = shotClockLength
+        updateTimer()
     }
 
     @IBAction func resetButtonTapped() {
@@ -48,17 +59,25 @@ class InterfaceController: WKInterfaceController {
         }
     }
 
+    func stopTimer() {
+        timer.invalidate()
+        isTimerRunning = false
+        timeStarted = nil
+        startStopButton.setTitle("Start")
+    }
+
+    func startTimer() {
+        runTimer()
+        isTimerRunning = true
+        timeStarted = Date().addingTimeInterval((shotClockLength - currentTime) * -1)
+        startStopButton.setTitle("Stop")
+    }
+
     @IBAction func startStopButtonTapped() {
         if isTimerRunning {
-            timer.invalidate()
-            isTimerRunning = false
-            timeStarted = nil
-            startStopButton.setTitle("Start")
+            stopTimer()
         } else {
-            runTimer()
-            isTimerRunning = true
-            timeStarted = Date().addingTimeInterval((shotClockLength - currentTime) * -1)
-            startStopButton.setTitle("Stop")
+            startTimer()
         }
     }
 

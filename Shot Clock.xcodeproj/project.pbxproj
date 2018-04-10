@@ -14,6 +14,7 @@
 		1744F9932071949A00FA476A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744F9922071949A00FA476A /* ExtensionDelegate.swift */; };
 		1744F9972071949A00FA476A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1744F9962071949A00FA476A /* Assets.xcassets */; };
 		1744F99C2071949A00FA476A /* Shot Clock Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1744F97F2071949800FA476A /* Shot Clock Watch.app */; };
+		17648F83207D788C00116948 /* ShotClockConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */; };
 		1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63D205EC0E50008778E /* AppDelegate.swift */; };
 		1793B640205EC0E50008778E /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63F205EC0E50008778E /* TimerViewController.swift */; };
 		1793B643205EC0E50008778E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1793B641205EC0E50008778E /* Main.storyboard */; };
@@ -430,6 +431,7 @@
 			files = (
 				1744F9932071949A00FA476A /* ExtensionDelegate.swift in Sources */,
 				1744F9912071949A00FA476A /* InterfaceController.swift in Sources */,
+				17648F83207D788C00116948 /* ShotClockConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
