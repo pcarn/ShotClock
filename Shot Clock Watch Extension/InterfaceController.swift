@@ -10,7 +10,7 @@ import WatchKit
 import Foundation
 
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, WKCrownDelegate {
     @IBOutlet var timerLabel: WKInterfaceLabel!
     @IBOutlet var startStopButton: WKInterfaceButton!
 
@@ -145,6 +145,20 @@ class InterfaceController: WKInterfaceController {
         }
     }
 
+    func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
+        print(rotationalDelta)
+        if !isTimerRunning {
+            var delta = rotationalDelta
+            if !showTenths() {
+                delta *= 10
+            }
+            currentTime += delta
+            currentTime = [shotClockLength, currentTime].min()!
+            currentTime = [0, currentTime].max()!
+            updateTimer()
+        }
+    }
+
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -154,6 +168,9 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+
+        crownSequencer.delegate = self
+        crownSequencer.focus()
         if isTimerRunning {
             currentTime = shotClockLength - Date().timeIntervalSince(timeStarted!)
             if currentTime < 0 {
