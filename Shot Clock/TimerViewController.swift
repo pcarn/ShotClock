@@ -87,10 +87,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
             currentTime = sender.value
         } else {
             currentTime = ceil(self.round(currentTime, toNearest: 0.1)) + (sender.value < currentTime ? -1.0 : 1.0)
-
-            if currentTime > shotClockLength {
-                currentTime = shotClockLength
-            }
+            currentTime = [shotClockLength, currentTime].min()!
         }
 
         updateTimer()
