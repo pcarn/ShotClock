@@ -146,7 +146,6 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     }
 
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
-        print(rotationalDelta)
         if !isTimerRunning {
             var delta = rotationalDelta
             if !showTenths() {
