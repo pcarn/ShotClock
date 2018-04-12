@@ -22,6 +22,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     @IBOutlet weak var middleResetAmountButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var recallButton: UIButton!
+    @IBOutlet weak var expirationNotice: DesignableView!
 
     var timer = Timer()
     var shotClockLength = 30.0 // parameterize this
@@ -161,6 +162,8 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
                 self.timerLabel.text = String(format: "%.0f", ceil(self.round(self.currentTime, toNearest: 0.1)))
             }
             self.stepper.value = self.currentTime
+
+            self.expirationNotice.isHidden = (self.round(self.currentTime, toNearest: 0.1) > 0.0)
         }
     }
 
@@ -204,7 +207,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         stepper.minimumValue = 0
         stepper.maximumValue = shotClockLength
         stepper.stepValue = 0.1
-        stepper.value = currentTime
+        updateTimer()
 
         UIApplication.shared.isIdleTimerDisabled = true
     }
