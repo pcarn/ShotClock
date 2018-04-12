@@ -2,8 +2,7 @@
 //  BorderBox.swift
 //  Shot Clock
 //
-//  Created by Peter Carnesciali on 4/11/18.
-//  Copyright © 2018 Peter Carnesciali. All rights reserved.
+//  https://spin.atomicobject.com/2017/07/18/swift-interface-builder/
 //
 
 import Foundation
