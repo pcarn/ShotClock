@@ -56,7 +56,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         }
     }
 
-    @IBAction func stopButtonTapped(_ sender: Any) {
+    func stopTimer() {
         timer.invalidate()
         isTimerRunning = false
         stopButton.isHidden = true
@@ -70,9 +70,14 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
             control.alpha = 1.0
         }
         self.impactFeedbackGenerator = nil
+
     }
 
-    @IBAction func startButtonTapped(_ sender: Any) {
+    @IBAction func stopButtonTapped(_ sender: Any) {
+        stopTimer()
+    }
+
+    func startTimer() {
         runTimer()
         startButton.isHidden = true
         stopButton.isHidden = false
@@ -81,6 +86,10 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
             control.isEnabled = false
             control.alpha = 0.3
         }
+    }
+
+    @IBAction func startButtonTapped(_ sender: Any) {
+        startTimer()
     }
 
     @IBAction func stepperChanged(sender: UIStepper) {
