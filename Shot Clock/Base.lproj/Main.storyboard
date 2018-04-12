@@ -28,13 +28,28 @@
                                         <color key="textColor" red="0.9882352941176471" green="0.47843137254901963" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3KF-as-irU" userLabel="Expiration Notice" customClass="DesignableView" customModule="Shot_Clock" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="300" height="205.5"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="WV8-Sc-RVu" firstAttribute="leading" secondItem="3KF-as-irU" secondAttribute="leading" id="IAT-nH-xIU"/>
+                                    <constraint firstItem="WV8-Sc-RVu" firstAttribute="width" secondItem="3KF-as-irU" secondAttribute="width" id="ICe-AV-Kao"/>
+                                    <constraint firstItem="WV8-Sc-RVu" firstAttribute="top" secondItem="3KF-as-irU" secondAttribute="top" id="Uiw-YN-blC"/>
                                     <constraint firstItem="WV8-Sc-RVu" firstAttribute="top" secondItem="xUY-tU-sRy" secondAttribute="top" constant="10" id="czC-lE-hlu"/>
                                     <constraint firstAttribute="trailing" secondItem="WV8-Sc-RVu" secondAttribute="trailing" constant="10" id="hKR-Xj-CLi"/>
                                     <constraint firstItem="WV8-Sc-RVu" firstAttribute="leading" secondItem="xUY-tU-sRy" secondAttribute="leading" constant="10" id="rcR-cN-bvL"/>
                                     <constraint firstAttribute="bottom" secondItem="WV8-Sc-RVu" secondAttribute="bottom" constant="10" id="vrx-bB-coS"/>
+                                    <constraint firstItem="WV8-Sc-RVu" firstAttribute="height" secondItem="3KF-as-irU" secondAttribute="height" id="xat-fn-CWz"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BF0-3K-c8c" customClass="UIControl">
@@ -195,6 +210,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="expirationNotice" destination="3KF-as-irU" id="zOD-wc-Z7p"/>
                         <outlet property="mainView" destination="8bC-Xf-vdC" id="X1Z-Gy-t6e"/>
                         <outlet property="middleResetAmountButton" destination="fKH-lA-O7T" id="ZfW-gU-WRg"/>
                         <outlet property="recallButton" destination="OfL-6M-SIe" id="WoQ-fx-XgA"/>

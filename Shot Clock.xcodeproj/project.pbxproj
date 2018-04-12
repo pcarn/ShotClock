@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		172BCEF6207ED83500DAAB07 /* BorderBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BCEF5207ED83500DAAB07 /* BorderBox.swift */; };
 		1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63D205EC0E50008778E /* AppDelegate.swift */; };
 		1793B640205EC0E50008778E /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63F205EC0E50008778E /* TimerViewController.swift */; };
 		1793B643205EC0E50008778E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1793B641205EC0E50008778E /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		172BCEF5207ED83500DAAB07 /* BorderBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderBox.swift; sourceTree = "<group>"; };
 		1793B63A205EC0E50008778E /* Shot Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shot Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1793B63D205EC0E50008778E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1793B63F205EC0E50008778E /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */,
 				1793B641205EC0E50008778E /* Main.storyboard */,
+				172BCEF5207ED83500DAAB07 /* BorderBox.swift */,
 				1793B63D205EC0E50008778E /* AppDelegate.swift */,
 				1793B63F205EC0E50008778E /* TimerViewController.swift */,
 				17CF5774206DE2D100D05E64 /* SettingsViewController.swift */,
@@ -282,6 +285,7 @@
 				1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */,
 				17BDE7BD206EDB3400958312 /* ShotClockConfiguration.swift in Sources */,
 				17CF5775206DE2D100D05E64 /* SettingsViewController.swift in Sources */,
+				172BCEF6207ED83500DAAB07 /* BorderBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
