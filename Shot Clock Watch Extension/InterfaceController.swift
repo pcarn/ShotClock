@@ -172,9 +172,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         crownSequencer.focus()
         if isTimerRunning {
             currentTime = shotClockLength - Date().timeIntervalSince(timeStarted!)
-            if currentTime < 0 {
-                currentTime = 0
-            }
+            currentTime = [currentTime, 0].max()!
         }
         updateTimer()
     }
