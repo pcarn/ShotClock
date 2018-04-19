@@ -173,14 +173,16 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     }
 
     func formattedStringForTime(time: Double) -> String {
-        if currentLeague == ShotClockConfiguration.League.nba {
-            if self.showTenths() {
-                return String(format: "%.1f", time)
-            } else {
-                return String(format: "%.0f", floor(self.round(time, toNearest: 0.1)))
-            }
+        if self.showTenths() {
+            return String(format: "%.1f", time)
         } else {
-            return String(format: "%.0f", ceil(self.round(time, toNearest: 0.1)))
+            var roundedTime:Double
+            if currentLeague == ShotClockConfiguration.League.nba {
+                roundedTime = floor(self.round(time, toNearest: 0.1))
+            } else {
+                roundedTime = ceil(self.round(time, toNearest: 0.1))
+            }
+            return String(format:"%.0f", roundedTime)
         }
     }
 
@@ -189,7 +191,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     }
 
     func showTenths() -> Bool {
-        return round(currentTime, toNearest: 0.1) < showTenthsUnder
+        return currentLeague == ShotClockConfiguration.League.nba && round(currentTime, toNearest: 0.1) < showTenthsUnder
     }
 
     func changeLeague(selectedLeague: ShotClockConfiguration.League) {
@@ -214,7 +216,6 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
             ofSize: timerLabel.font.pointSize,
             weight: UIFont.Weight.light
         )
-
 
         if let league = ShotClockConfiguration.League(rawValue: UserDefaults.standard.integer(forKey: "leagueSetting")) {
             currentLeague = league

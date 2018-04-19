@@ -9,7 +9,6 @@
 import WatchKit
 import Foundation
 
-
 class InterfaceController: WKInterfaceController, WKCrownDelegate {
     @IBOutlet var timerLabel: WKInterfaceLabel!
     @IBOutlet var startStopButton: WKInterfaceButton!
@@ -22,6 +21,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     let showTenthsUnder = 5.0
     var isTimerRunning = false
     var timeStarted:Date?
+    var currentLeague = ShotClockConfiguration.League.ncaa
 
     enum NotificationType {
         case onTheSecond
@@ -41,6 +41,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     }
 
     func changeLeague(selectedLeague: ShotClockConfiguration.League) {
+        currentLeague = selectedLeague
         let config = ShotClockConfiguration.leagueConfiguration(league: selectedLeague)
         stopTimer()
         shotClockLength = Double(config.shotClockLength)
@@ -116,23 +117,28 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
 
     func updateTimer() {
         DispatchQueue.main.async {
-            if self.showTenths() {
-                self.timerLabel.setAttributedText(self.monospacedString(string: String(format: "%.1f", self.currentTime)))
+            self.timerLabel.setAttributedText(
+                self.monospacedString(string: self.formattedStringForTime(time: self.currentTime))
+            )
+        }
+    }
+
+    func formattedStringForTime(time: Double) -> String {
+        if self.showTenths() {
+            return String(format: "%.1f", time)
+        } else {
+            var roundedTime:Double
+            if currentLeague == ShotClockConfiguration.League.nba {
+                roundedTime = floor(self.round(time, toNearest: 0.1))
             } else {
-                self.timerLabel.setAttributedText(
-                    self.monospacedString(
-                        string: String(
-                            format: "%.0f",
-                            ceil(self.round(self.currentTime, toNearest: 0.1))
-                        )
-                    )
-                )
+                roundedTime = ceil(self.round(time, toNearest: 0.1))
             }
+            return String(format:"%.0f", roundedTime)
         }
     }
 
     func showTenths() -> Bool {
-        return round(currentTime, toNearest: 0.1) < showTenthsUnder
+        return currentLeague == ShotClockConfiguration.League.nba && round(currentTime, toNearest: 0.1) < showTenthsUnder
     }
 
     func generateFeedback(type: NotificationType) {
@@ -149,7 +155,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         if !isTimerRunning {
             var delta = rotationalDelta
             if !showTenths() {
-                delta *= 10
+                delta *= 8
             }
             currentTime += delta
             currentTime = [shotClockLength, currentTime].min()!
@@ -160,7 +166,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
+        changeLeague(selectedLeague: currentLeague)
         // Configure interface objects here.
     }
     
