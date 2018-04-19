@@ -32,6 +32,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     var isTimerRunning = false
     var impactFeedbackGenerator : UIImpactFeedbackGenerator? = nil
     var recallAmount = -1.0
+    var currentLeague = ShotClockConfiguration.League.ncaa
 
     enum NotificationType {
         case onTheSecond
@@ -165,14 +166,21 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
 
     func updateTimer() {
         DispatchQueue.main.async {
-            if self.showTenths() {
-                self.timerLabel.text = String(format: "%.1f", self.currentTime)
-            } else {
-                self.timerLabel.text = String(format: "%.0f", ceil(self.round(self.currentTime, toNearest: 0.1)))
-            }
+            self.timerLabel.text = self.formattedStringForTime(time: self.currentTime)
             self.stepper.value = self.currentTime
-
             self.expirationNotice.isHidden = (self.round(self.currentTime, toNearest: 0.1) > 0.0)
+        }
+    }
+
+    func formattedStringForTime(time: Double) -> String {
+        if currentLeague == ShotClockConfiguration.League.nba {
+            if self.showTenths() {
+                return String(format: "%.1f", time)
+            } else {
+                return String(format: "%.0f", floor(self.round(time, toNearest: 0.1)))
+            }
+        } else {
+            return String(format: "%.0f", ceil(self.round(time, toNearest: 0.1)))
         }
     }
 
@@ -185,6 +193,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     }
 
     func changeLeague(selectedLeague: ShotClockConfiguration.League) {
+        currentLeague = selectedLeague
         let config = ShotClockConfiguration.leagueConfiguration(league: selectedLeague)
         shotClockLength = Double(config.shotClockLength)
         middleResetAmount = Double(config.middleResetAmount)
@@ -208,10 +217,9 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
 
 
         if let league = ShotClockConfiguration.League(rawValue: UserDefaults.standard.integer(forKey: "leagueSetting")) {
-            changeLeague(selectedLeague: league)
-        } else {
-            changeLeague(selectedLeague: ShotClockConfiguration.League.ncaa)
+            currentLeague = league
         }
+        changeLeague(selectedLeague: currentLeague)
 
         stepper.minimumValue = 0
         stepper.maximumValue = shotClockLength
