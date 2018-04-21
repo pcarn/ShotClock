@@ -16,12 +16,11 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     let monospacedFont = UIFont.monospacedDigitSystemFont(ofSize: 102.0, weight: .regular)
 
     var timer = Timer()
-    var shotClockLength = 30.0
-    lazy var currentTime = shotClockLength
-    let showTenthsUnder = 5.0
+    lazy var currentTime = config.shotClockLength
     var isTimerRunning = false
     var timeStarted:Date?
     var currentLeague = ShotClockConfiguration.League.ncaa
+    lazy var config = ShotClockConfiguration.leagueConfiguration(league: currentLeague)
 
     enum NotificationType {
         case onTheSecond
@@ -42,15 +41,14 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
 
     func changeLeague(selectedLeague: ShotClockConfiguration.League) {
         currentLeague = selectedLeague
-        let config = ShotClockConfiguration.leagueConfiguration(league: selectedLeague)
+        config = ShotClockConfiguration.leagueConfiguration(league: selectedLeague)
         stopTimer()
-        shotClockLength = Double(config.shotClockLength)
-        currentTime = shotClockLength
+        currentTime = config.shotClockLength
         updateTimer()
     }
 
     @IBAction func resetButtonTapped() {
-        currentTime = shotClockLength
+        currentTime = config.shotClockLength
         updateTimer()
         if isTimerRunning {
             timeStarted = Date()
@@ -70,7 +68,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     func startTimer() {
         runTimer()
         isTimerRunning = true
-        timeStarted = Date().addingTimeInterval((shotClockLength - currentTime) * -1)
+        timeStarted = Date().addingTimeInterval((config.shotClockLength - currentTime) * -1)
         startStopButton.setTitle("Stop")
     }
 
@@ -105,7 +103,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
             generateFeedback(type: NotificationType.buzzer)
         }
 
-        if roundedTime <= showTenthsUnder && roundedTime.truncatingRemainder(dividingBy: 1) == 0 {
+        if roundedTime <= 5.0 && roundedTime.truncatingRemainder(dividingBy: 1) == 0 {
             generateFeedback(type: NotificationType.onTheSecond)
         }
         updateTimer()
@@ -128,7 +126,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
             return String(format: "%.1f", time)
         } else {
             var roundedTime:Double
-            if currentLeague == ShotClockConfiguration.League.nba {
+            if config.round == "down" {
                 roundedTime = floor(self.round(time, toNearest: 0.1))
             } else {
                 roundedTime = ceil(self.round(time, toNearest: 0.1))
@@ -138,7 +136,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     }
 
     func showTenths() -> Bool {
-        return currentLeague == ShotClockConfiguration.League.nba && round(currentTime, toNearest: 0.1) < showTenthsUnder
+        return round(currentTime, toNearest: 0.1) < config.showTenthsUnder
     }
 
     func generateFeedback(type: NotificationType) {
@@ -158,7 +156,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
                 delta *= 8
             }
             currentTime += delta
-            currentTime = [shotClockLength, currentTime].min()!
+            currentTime = [config.shotClockLength, currentTime].min()!
             currentTime = [0, currentTime].max()!
             updateTimer()
         }
@@ -166,7 +164,6 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        changeLeague(selectedLeague: currentLeague)
         // Configure interface objects here.
     }
     
@@ -177,7 +174,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         crownSequencer.delegate = self
         crownSequencer.focus()
         if isTimerRunning {
-            currentTime = shotClockLength - Date().timeIntervalSince(timeStarted!)
+            currentTime = config.shotClockLength - Date().timeIntervalSince(timeStarted!)
             currentTime = [currentTime, 0].max()!
         }
         updateTimer()

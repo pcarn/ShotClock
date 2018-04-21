@@ -14,8 +14,10 @@ class ShotClockConfiguration: NSObject {
     }
 
     struct Configuration {
-        let shotClockLength: Int
-        let middleResetAmount: Int
+        let shotClockLength: Double
+        let middleResetAmount: Double
+        let round: String
+        let showTenthsUnder: Double
         let instructions: String
     }
 
@@ -23,8 +25,10 @@ class ShotClockConfiguration: NSObject {
         switch league {
         case League.ncaa:
             return Configuration(
-                shotClockLength: 30,
-                middleResetAmount: 20,
+                shotClockLength: 30.0,
+                middleResetAmount: 20.0,
+                round: "up",
+                showTenthsUnder: -1.0,
                 instructions:
                 """
                 START shot clock when:
@@ -72,8 +76,10 @@ class ShotClockConfiguration: NSObject {
             )
         case League.nba:
             return Configuration(
-                shotClockLength: 24,
-                middleResetAmount: 14,
+                shotClockLength: 24.0,
+                middleResetAmount: 14.0,
+                round: "down",
+                showTenthsUnder: 5.0,
                 instructions:
                 """
                 Rule 7-IV - Resetting 24-Second Clock
@@ -97,8 +103,10 @@ class ShotClockConfiguration: NSObject {
             )
         case League.fiba:
             return Configuration(
-                shotClockLength: 24,
-                middleResetAmount: 14,
+                shotClockLength: 24.0,
+                middleResetAmount: 14.0,
+                round: "up",
+                showTenthsUnder: -1.0,
                 instructions:
                 """
                 The shot clock shall be:

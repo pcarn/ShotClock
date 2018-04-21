@@ -25,14 +25,12 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     @IBOutlet weak var expirationNotice: DesignableView!
 
     var timer = Timer()
-    var shotClockLength = 30.0 // parameterize this
-    lazy var currentTime = shotClockLength
-    var middleResetAmount = 14.0
-    let showTenthsUnder = 5.0
+    lazy var currentTime = config.shotClockLength
     var isTimerRunning = false
     var impactFeedbackGenerator : UIImpactFeedbackGenerator? = nil
     var recallAmount = -1.0
     var currentLeague = ShotClockConfiguration.League.ncaa
+    lazy var config = ShotClockConfiguration.leagueConfiguration(league: currentLeague)
 
     enum NotificationType {
         case onTheSecond
@@ -43,7 +41,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         timer.invalidate()
         self.impactFeedbackGenerator = nil
         recallAmount = currentTime
-        currentTime = shotClockLength
+        currentTime = config.shotClockLength
         updateTimer()
         if !isTimerRunning {
             recallButton.isEnabled = true
@@ -62,7 +60,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         isTimerRunning = false
         stopButton.isHidden = true
         startButton.isHidden = false
-        var controlsToEnable: Array<UIControl> = [stepper, middleResetAmountButton, settingsButton]
+        var controlsToEnable: Array<UIControl> = [stepper, settingsButton]
         if recallAmount != -1.0 {
             controlsToEnable.append(recallButton)
         }
@@ -82,7 +80,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         runTimer()
         startButton.isHidden = true
         stopButton.isHidden = false
-        let controlsToDisable: Array<UIControl> = [stepper, middleResetAmountButton, settingsButton, recallButton]
+        let controlsToDisable: Array<UIControl> = [stepper, settingsButton, recallButton]
         for control in controlsToDisable {
             control.isEnabled = false
             control.alpha = 0.3
@@ -94,11 +92,11 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     }
 
     @IBAction func stepperChanged(sender: UIStepper) {
-        if self.round(sender.value, toNearest: 0.1) <= showTenthsUnder {
+        if self.round(sender.value, toNearest: 0.1) <= config.showTenthsUnder {
             currentTime = sender.value
         } else {
             currentTime = ceil(self.round(currentTime, toNearest: 0.1)) + (sender.value < currentTime ? -1.0 : 1.0)
-            currentTime = [shotClockLength, currentTime].min()!
+            currentTime = [config.shotClockLength, currentTime].min()!
         }
 
         updateTimer()
@@ -116,7 +114,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
 
     @IBAction func middleResetAmountButtonTapped(_ sender: Any) {
         recallAmount = currentTime
-        currentTime = middleResetAmount
+        currentTime = config.middleResetAmount
         recallButton.isEnabled = true
         recallButton.alpha = 1.0
         updateTimer()
@@ -144,7 +142,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         }
 
         updateTimer()
-        if roundedTime <= showTenthsUnder && roundedTime.truncatingRemainder(dividingBy: 1) == 0 {
+        if roundedTime <= config.showTenthsUnder && roundedTime.truncatingRemainder(dividingBy: 1) == 0 {
             generateFeedback(type: NotificationType.onTheSecond)
         }
 
@@ -177,7 +175,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
             return String(format: "%.1f", time)
         } else {
             var roundedTime:Double
-            if currentLeague == ShotClockConfiguration.League.nba {
+            if config.round == "down" {
                 roundedTime = floor(self.round(time, toNearest: 0.1))
             } else {
                 roundedTime = ceil(self.round(time, toNearest: 0.1))
@@ -191,19 +189,18 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     }
 
     func showTenths() -> Bool {
-        return currentLeague == ShotClockConfiguration.League.nba && round(currentTime, toNearest: 0.1) < showTenthsUnder
+        return round(currentTime, toNearest: 0.1) < config.showTenthsUnder
     }
 
     func changeLeague(selectedLeague: ShotClockConfiguration.League) {
         currentLeague = selectedLeague
-        let config = ShotClockConfiguration.leagueConfiguration(league: selectedLeague)
-        shotClockLength = Double(config.shotClockLength)
-        middleResetAmount = Double(config.middleResetAmount)
-        middleResetAmountButton.setTitle("\(String(format: "%.0f", Darwin.round(middleResetAmount)))s", for: .normal)
-        currentTime = shotClockLength
+        config = ShotClockConfiguration.leagueConfiguration(league: currentLeague)
+        middleResetAmountButton.setTitle("\(String(format: "%.0f", Darwin.round(config.middleResetAmount)))s", for: .normal)
+        currentTime = config.shotClockLength
         recallAmount = -1.0
         recallButton.isEnabled = false
         recallButton.alpha = 0.3
+        stepper.maximumValue = config.shotClockLength
         updateTimer()
     }
 
@@ -223,7 +220,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         changeLeague(selectedLeague: currentLeague)
 
         stepper.minimumValue = 0
-        stepper.maximumValue = shotClockLength
+        stepper.maximumValue = config.shotClockLength
         stepper.stepValue = 0.1
         updateTimer()
 
