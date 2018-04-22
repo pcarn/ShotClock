@@ -95,7 +95,9 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         if self.round(sender.value, toNearest: 0.1) <= config.showTenthsUnder {
             currentTime = sender.value
         } else {
-            currentTime = ceil(self.round(currentTime, toNearest: 0.1)) + (sender.value < currentTime ? -1.0 : 1.0)
+            let roundedTime = self.round(currentTime, toNearest: 0.1)
+            let flooredTime = config.round == "down" ? floor(roundedTime) : ceil(roundedTime)
+            currentTime = flooredTime + (sender.value < currentTime ? -1.0 : 1.0)
             currentTime = [config.shotClockLength, currentTime].min()!
         }
 
