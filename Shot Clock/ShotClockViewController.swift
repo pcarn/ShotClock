@@ -1,5 +1,5 @@
 //
-//  TimerViewController.swift
+//  ShotClockViewController.swift
 //  Shot Clock
 //
 //  Created by Peter Carnesciali on 3/18/18.
@@ -13,7 +13,7 @@ protocol isAbleToSetLeague {
     func changeLeague(selectedLeague: ShotClockConfiguration.League)
 }
 
-class TimerViewController: UIViewController, isAbleToSetLeague {
+class ShotClockViewController: UIViewController, isAbleToSetLeague {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var stopButton: UIControl!
     @IBOutlet weak var startButton: UIControl!
@@ -126,7 +126,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         timer = Timer.scheduledTimer(
                     timeInterval: 0.1,
                     target: self,
-                    selector: (#selector(TimerViewController.decrementTimer)),
+                    selector: (#selector(ShotClockViewController.decrementTimer)),
                     userInfo: nil,
                     repeats: true
                 )

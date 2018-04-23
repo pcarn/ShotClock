@@ -17,7 +17,7 @@
 		1744F99C2071949A00FA476A /* Shot Clock Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1744F97F2071949800FA476A /* Shot Clock Watch.app */; };
 		17648F83207D788C00116948 /* ShotClockConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */; };
 		1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63D205EC0E50008778E /* AppDelegate.swift */; };
-		1793B640205EC0E50008778E /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63F205EC0E50008778E /* TimerViewController.swift */; };
+		1793B640205EC0E50008778E /* ShotClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63F205EC0E50008778E /* ShotClockViewController.swift */; };
 		1793B643205EC0E50008778E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1793B641205EC0E50008778E /* Main.storyboard */; };
 		1793B645205EC0E50008778E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1793B644205EC0E50008778E /* Assets.xcassets */; };
 		1793B648205EC0E50008778E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1793B646205EC0E50008778E /* LaunchScreen.storyboard */; };
@@ -25,6 +25,8 @@
 		1793B65E205EC0E60008778E /* Shot_ClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B65D205EC0E60008778E /* Shot_ClockUITests.swift */; };
 		17BDE7BD206EDB3400958312 /* ShotClockConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */; };
 		17CF5775206DE2D100D05E64 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CF5774206DE2D100D05E64 /* SettingsViewController.swift */; };
+		17D8D706208EA2FE00A2BBDE /* ShotClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D8D705208EA2FE00A2BBDE /* ShotClock.swift */; };
+		17D8D707208EA2FE00A2BBDE /* ShotClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D8D705208EA2FE00A2BBDE /* ShotClock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +98,7 @@
 		1744F9982071949A00FA476A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1793B63A205EC0E50008778E /* Shot Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shot Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1793B63D205EC0E50008778E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1793B63F205EC0E50008778E /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		1793B63F205EC0E50008778E /* ShotClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotClockViewController.swift; sourceTree = "<group>"; };
 		1793B642205EC0E50008778E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1793B644205EC0E50008778E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1793B647205EC0E50008778E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		1793B65F205EC0E60008778E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotClockConfiguration.swift; sourceTree = "<group>"; };
 		17CF5774206DE2D100D05E64 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		17D8D705208EA2FE00A2BBDE /* ShotClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotClock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,10 +203,11 @@
 			isa = PBXGroup;
 			children = (
 				17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */,
+				17D8D705208EA2FE00A2BBDE /* ShotClock.swift */,
 				1793B641205EC0E50008778E /* Main.storyboard */,
 				172BCEF5207ED83500DAAB07 /* BorderBox.swift */,
 				1793B63D205EC0E50008778E /* AppDelegate.swift */,
-				1793B63F205EC0E50008778E /* TimerViewController.swift */,
+				1793B63F205EC0E50008778E /* ShotClockViewController.swift */,
 				17CF5774206DE2D100D05E64 /* SettingsViewController.swift */,
 				1793B644205EC0E50008778E /* Assets.xcassets */,
 				1793B646205EC0E50008778E /* LaunchScreen.storyboard */,
@@ -432,6 +436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17D8D707208EA2FE00A2BBDE /* ShotClock.swift in Sources */,
 				1744F9932071949A00FA476A /* ExtensionDelegate.swift in Sources */,
 				1744F9912071949A00FA476A /* InterfaceController.swift in Sources */,
 				17648F83207D788C00116948 /* ShotClockConfiguration.swift in Sources */,
@@ -442,10 +447,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1793B640205EC0E50008778E /* TimerViewController.swift in Sources */,
+				1793B640205EC0E50008778E /* ShotClockViewController.swift in Sources */,
 				1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */,
 				17BDE7BD206EDB3400958312 /* ShotClockConfiguration.swift in Sources */,
 				17CF5775206DE2D100D05E64 /* SettingsViewController.swift in Sources */,
+				17D8D706208EA2FE00A2BBDE /* ShotClock.swift in Sources */,
 				172BCEF6207ED83500DAAB07 /* BorderBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
