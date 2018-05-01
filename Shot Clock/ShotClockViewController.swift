@@ -25,12 +25,8 @@ class ShotClockViewController: UIViewController, isAbleToSetLeague {
     @IBOutlet weak var expirationNotice: DesignableView!
 
     var timer = Timer()
-    lazy var currentTime = config.shotClockLength
-    var isTimerRunning = false
+    var shotClock = ShotClock()
     var impactFeedbackGenerator : UIImpactFeedbackGenerator? = nil
-    var recallAmount = -1.0
-    var currentLeague = ShotClockConfiguration.League.ncaa
-    lazy var config = ShotClockConfiguration.leagueConfiguration(league: currentLeague)
 
     enum NotificationType {
         case onTheSecond
@@ -39,29 +35,28 @@ class ShotClockViewController: UIViewController, isAbleToSetLeague {
     
     @IBAction func resetButtonTapped(_ sender: Any) {
         timer.invalidate()
+        shotClock.reset()
         self.impactFeedbackGenerator = nil
-        recallAmount = currentTime
-        currentTime = config.shotClockLength
         updateTimer()
-        if !isTimerRunning {
+        if !shotClock.isTimerRunning {
             recallButton.isEnabled = true
             recallButton.alpha = 1.0
         }
     }
 
     @IBAction func resetButtonReleased(_ sender: Any) {
-        if isTimerRunning {
+        if shotClock.isTimerRunning {
             runTimer()
         }
     }
 
     func stopTimer() {
         timer.invalidate()
-        isTimerRunning = false
+        shotClock.isTimerRunning = false
         stopButton.isHidden = true
         startButton.isHidden = false
         var controlsToEnable: Array<UIControl> = [stepper, settingsButton]
-        if recallAmount != -1.0 {
+        if shotClock.recallAmount != -1.0 {
             controlsToEnable.append(recallButton)
         }
         for control in controlsToEnable {
@@ -92,31 +87,27 @@ class ShotClockViewController: UIViewController, isAbleToSetLeague {
     }
 
     @IBAction func stepperChanged(sender: UIStepper) {
-        if self.round(sender.value, toNearest: 0.1) <= config.showTenthsUnder {
-            currentTime = sender.value
+        if self.round(sender.value, toNearest: 0.1) <= shotClock.config.showTenthsUnder {
+            shotClock.setTime(time: sender.value)
         } else {
-            let roundedTime = self.round(currentTime, toNearest: 0.1)
-            let flooredTime = config.round == "down" ? floor(roundedTime) : ceil(roundedTime)
-            currentTime = flooredTime + (sender.value < currentTime ? -1.0 : 1.0)
-            currentTime = [config.shotClockLength, currentTime].min()!
+            let roundedTime = self.round(shotClock.currentTime, toNearest: 0.1)
+            let flooredTime = shotClock.config.round == "down" ? floor(roundedTime) : ceil(roundedTime)
+            let currentTime = flooredTime + (sender.value < shotClock.currentTime ? -1.0 : 1.0)
+            shotClock.setTime(time: [shotClock.config.shotClockLength, currentTime].min()!)
         }
 
         updateTimer()
     }
 
     @IBAction func recallButtonTapped(_ sender: Any) {
-        if recallAmount != -1.0 {
-            currentTime = recallAmount
-        }
-        recallAmount = -1.0
+        shotClock.recall()
         recallButton.isEnabled = false
         recallButton.alpha = 0.3
         updateTimer()
     }
 
     @IBAction func middleResetAmountButtonTapped(_ sender: Any) {
-        recallAmount = currentTime
-        currentTime = config.middleResetAmount
+        shotClock.middleReset()
         recallButton.isEnabled = true
         recallButton.alpha = 1.0
         updateTimer()
@@ -131,20 +122,20 @@ class ShotClockViewController: UIViewController, isAbleToSetLeague {
                     repeats: true
                 )
 
-        isTimerRunning = true
+        shotClock.isTimerRunning = true
     }
 
     @objc func decrementTimer() {
-        currentTime -= 0.1
-        let roundedTime = round(currentTime, toNearest: 0.1)
+        shotClock.setTime(time: shotClock.currentTime - 0.1)
+        let roundedTime = round(shotClock.currentTime, toNearest: 0.1)
         if roundedTime <= 0 {
-            currentTime = 0 // To prevent "-0.0"
+            shotClock.setTime(time: 0) // To prevent "-0.0"
             timer.invalidate()
             generateFeedback(type: NotificationType.buzzer)
         }
 
         updateTimer()
-        if roundedTime <= config.showTenthsUnder && roundedTime.truncatingRemainder(dividingBy: 1) == 0 {
+        if roundedTime <= shotClock.config.showTenthsUnder && roundedTime.truncatingRemainder(dividingBy: 1) == 0 {
             generateFeedback(type: NotificationType.onTheSecond)
         }
 
@@ -166,9 +157,9 @@ class ShotClockViewController: UIViewController, isAbleToSetLeague {
 
     func updateTimer() {
         DispatchQueue.main.async {
-            self.timerLabel.text = self.formattedStringForTime(time: self.currentTime)
-            self.stepper.value = self.currentTime
-            self.expirationNotice.isHidden = (self.round(self.currentTime, toNearest: 0.1) > 0.0)
+            self.timerLabel.text = self.formattedStringForTime(time: self.shotClock.currentTime)
+            self.stepper.value = self.shotClock.currentTime
+            self.expirationNotice.isHidden = (self.round(self.shotClock.currentTime, toNearest: 0.1) > 0.0)
         }
     }
 
@@ -177,7 +168,7 @@ class ShotClockViewController: UIViewController, isAbleToSetLeague {
             return String(format: "%.1f", time)
         } else {
             var roundedTime:Double
-            if config.round == "down" {
+            if shotClock.config.round == "down" {
                 roundedTime = floor(self.round(time, toNearest: 0.1))
             } else {
                 roundedTime = ceil(self.round(time, toNearest: 0.1))
@@ -191,18 +182,15 @@ class ShotClockViewController: UIViewController, isAbleToSetLeague {
     }
 
     func showTenths() -> Bool {
-        return round(currentTime, toNearest: 0.1) < config.showTenthsUnder
+        return round(shotClock.currentTime, toNearest: 0.1) < shotClock.config.showTenthsUnder
     }
 
     func changeLeague(selectedLeague: ShotClockConfiguration.League) {
-        currentLeague = selectedLeague
-        config = ShotClockConfiguration.leagueConfiguration(league: currentLeague)
-        middleResetAmountButton.setTitle("\(String(format: "%.0f", Darwin.round(config.middleResetAmount)))s", for: .normal)
-        currentTime = config.shotClockLength
-        recallAmount = -1.0
+        shotClock.changeLeague(selectedLeague: selectedLeague)
+        middleResetAmountButton.setTitle("\(String(format: "%.0f", Darwin.round(shotClock.config.middleResetAmount)))s", for: .normal)
         recallButton.isEnabled = false
         recallButton.alpha = 0.3
-        stepper.maximumValue = config.shotClockLength
+        stepper.maximumValue = shotClock.config.shotClockLength
         updateTimer()
     }
 
@@ -216,13 +204,14 @@ class ShotClockViewController: UIViewController, isAbleToSetLeague {
             weight: UIFont.Weight.light
         )
 
+        var currentLeague = ShotClockConfiguration.League.ncaa
         if let league = ShotClockConfiguration.League(rawValue: UserDefaults.standard.integer(forKey: "leagueSetting")) {
             currentLeague = league
         }
         changeLeague(selectedLeague: currentLeague)
 
         stepper.minimumValue = 0
-        stepper.maximumValue = config.shotClockLength
+        stepper.maximumValue = shotClock.config.shotClockLength
         stepper.stepValue = 0.1
         updateTimer()
 
