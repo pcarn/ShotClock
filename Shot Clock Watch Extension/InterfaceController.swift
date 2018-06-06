@@ -81,7 +81,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     }
 
     func monospacedString(string: String) -> NSAttributedString? {
-        return NSAttributedString(string: string, attributes: [.font: monospacedFont])
+        return NSAttributedString(string: string, attributes: [NSAttributedString.Key.font: monospacedFont])
     }
 
     func runTimer() {

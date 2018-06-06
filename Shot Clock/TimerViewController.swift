@@ -197,7 +197,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     func changeLeague(selectedLeague: ShotClockConfiguration.League) {
         currentLeague = selectedLeague
         config = ShotClockConfiguration.leagueConfiguration(league: currentLeague)
-        middleResetAmountButton.setTitle("\(String(format: "%.0f", Darwin.round(config.middleResetAmount)))s", for: .normal)
+        middleResetAmountButton.setTitle("\(String(format: "%.0f", Darwin.round(config.middleResetAmount)))s", for: UIControl.State.normal)
         currentTime = config.shotClockLength
         recallAmount = -1.0
         recallButton.isEnabled = false

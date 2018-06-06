@@ -334,14 +334,17 @@
 				TargetAttributes = {
 					1744F97E2071949800FA476A = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					1744F98A2071949A00FA476A = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					1793B639205EC0E50008778E = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
@@ -351,11 +354,13 @@
 					};
 					1793B64D205EC0E60008778E = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 1793B639205EC0E50008778E;
 					};
 					1793B658205EC0E60008778E = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 1793B639205EC0E50008778E;
 					};
@@ -534,7 +539,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
@@ -555,7 +560,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
@@ -574,7 +579,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 4.3;
 			};
@@ -593,7 +598,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 4.3;
 			};
@@ -721,7 +726,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -737,7 +742,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -753,7 +758,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pcarn.Shot-ClockTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shot Clock.app/Shot Clock";
 			};
@@ -770,7 +775,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pcarn.Shot-ClockTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shot Clock.app/Shot Clock";
 			};
@@ -786,7 +791,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pcarn.Shot-ClockUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Shot Clock";
 			};
@@ -802,7 +807,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pcarn.Shot-ClockUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Shot Clock";
 			};
