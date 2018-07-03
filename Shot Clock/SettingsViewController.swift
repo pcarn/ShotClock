@@ -71,8 +71,8 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         let config: ShotClockConfiguration.Configuration = ShotClockConfiguration.leagueConfiguration(league: newLeague)
 
         league = newLeague
-        shotClockLengthLabel.text = "\(config.shotClockLength)"
-        middleResetLabel.text = "\(config.middleResetAmount)"
+        shotClockLengthLabel.text = String(Int(config.shotClockLength))
+        middleResetLabel.text = String(Int(config.middleResetAmount))
         instructionTextView.text = config.instructions
         instructionTextView.contentOffset = CGPoint.zero
     }
