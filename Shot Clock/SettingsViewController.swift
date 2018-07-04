@@ -45,7 +45,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         let sendMailErrorAlert = UIAlertController(
             title: "Could Not Send Email",
             message: "Your device could not send e-mail.",
-            preferredStyle: UIAlertControllerStyle.alert
+            preferredStyle: UIAlertController.Style.alert
         )
         sendMailErrorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(sendMailErrorAlert, animated: true, completion: nil)
@@ -71,8 +71,8 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         let config: ShotClockConfiguration.Configuration = ShotClockConfiguration.leagueConfiguration(league: newLeague)
 
         league = newLeague
-        shotClockLengthLabel.text = "\(config.shotClockLength)"
-        middleResetLabel.text = "\(config.middleResetAmount)"
+        shotClockLengthLabel.text = String(Int(config.shotClockLength))
+        middleResetLabel.text = String(Int(config.middleResetAmount))
         instructionTextView.text = config.instructions
         instructionTextView.contentOffset = CGPoint.zero
     }
