@@ -177,6 +177,10 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         case "iPad7,1", "iPad7,2":                       return "iPad Pro (12.9-inch, 2nd generation)"
         case "iPad7,3", "iPad7,4":                       return "iPad Pro (10.5-inch)"
         case "iPad7,5", "iPad7,6":                       return "iPad (6th generation)"
+        case "iPad8,1", "iPad8,2", "iPad8,3", "iPad8,4",
+             "iPad8,5", "iPad8,6", "iPad8,7", "iPad8,8": return "iPad Pro 3rd Gen"
+        case "iPad11,1", "iPad11,2":                     return "iPad mini 5th Gen"
+        case "iPad11,3", "iPad11,4":                     return "iPad Air 3rd Gen"
         default:                                         return identifier
         }
     }
