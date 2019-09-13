@@ -21,8 +21,6 @@
 		1793B643205EC0E50008778E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1793B641205EC0E50008778E /* Main.storyboard */; };
 		1793B645205EC0E50008778E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1793B644205EC0E50008778E /* Assets.xcassets */; };
 		1793B648205EC0E50008778E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1793B646205EC0E50008778E /* LaunchScreen.storyboard */; };
-		1793B653205EC0E60008778E /* Shot_ClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B652205EC0E60008778E /* Shot_ClockTests.swift */; };
-		1793B65E205EC0E60008778E /* Shot_ClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B65D205EC0E60008778E /* Shot_ClockUITests.swift */; };
 		17BDE7BD206EDB3400958312 /* ShotClockConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */; };
 		17CF5775206DE2D100D05E64 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CF5774206DE2D100D05E64 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -41,20 +39,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1744F97E2071949800FA476A;
 			remoteInfo = "Shot Clock Watch";
-		};
-		1793B64F205EC0E60008778E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1793B632205EC0E50008778E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1793B639205EC0E50008778E;
-			remoteInfo = "Shot Clock";
-		};
-		1793B65A205EC0E60008778E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1793B632205EC0E50008778E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1793B639205EC0E50008778E;
-			remoteInfo = "Shot Clock";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -101,12 +85,6 @@
 		1793B644205EC0E50008778E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1793B647205EC0E50008778E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1793B649205EC0E50008778E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1793B64E205EC0E60008778E /* Shot ClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shot ClockTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1793B652205EC0E60008778E /* Shot_ClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot_ClockTests.swift; sourceTree = "<group>"; };
-		1793B654205EC0E60008778E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1793B659205EC0E60008778E /* Shot ClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shot ClockUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1793B65D205EC0E60008778E /* Shot_ClockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot_ClockUITests.swift; sourceTree = "<group>"; };
-		1793B65F205EC0E60008778E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotClockConfiguration.swift; sourceTree = "<group>"; };
 		17CF5774206DE2D100D05E64 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,20 +98,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1793B637205EC0E50008778E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1793B64B205EC0E60008778E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1793B656205EC0E60008778E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -175,8 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				1793B63C205EC0E50008778E /* Shot Clock */,
-				1793B651205EC0E60008778E /* Shot ClockTests */,
-				1793B65C205EC0E60008778E /* Shot ClockUITests */,
 				1744F9802071949800FA476A /* Shot Clock Watch */,
 				1744F98F2071949A00FA476A /* Shot Clock Watch Extension */,
 				1793B63B205EC0E50008778E /* Products */,
@@ -188,8 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				1793B63A205EC0E50008778E /* Shot Clock.app */,
-				1793B64E205EC0E60008778E /* Shot ClockTests.xctest */,
-				1793B659205EC0E60008778E /* Shot ClockUITests.xctest */,
 				1744F97F2071949800FA476A /* Shot Clock Watch.app */,
 				1744F98B2071949A00FA476A /* Shot Clock Watch Extension.appex */,
 			);
@@ -210,24 +170,6 @@
 				1793B649205EC0E50008778E /* Info.plist */,
 			);
 			path = "Shot Clock";
-			sourceTree = "<group>";
-		};
-		1793B651205EC0E60008778E /* Shot ClockTests */ = {
-			isa = PBXGroup;
-			children = (
-				1793B652205EC0E60008778E /* Shot_ClockTests.swift */,
-				1793B654205EC0E60008778E /* Info.plist */,
-			);
-			path = "Shot ClockTests";
-			sourceTree = "<group>";
-		};
-		1793B65C205EC0E60008778E /* Shot ClockUITests */ = {
-			isa = PBXGroup;
-			children = (
-				1793B65D205EC0E60008778E /* Shot_ClockUITests.swift */,
-				1793B65F205EC0E60008778E /* Info.plist */,
-			);
-			path = "Shot ClockUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,42 +228,6 @@
 			productReference = 1793B63A205EC0E50008778E /* Shot Clock.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1793B64D205EC0E60008778E /* Shot ClockTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1793B665205EC0E60008778E /* Build configuration list for PBXNativeTarget "Shot ClockTests" */;
-			buildPhases = (
-				1793B64A205EC0E60008778E /* Sources */,
-				1793B64B205EC0E60008778E /* Frameworks */,
-				1793B64C205EC0E60008778E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1793B650205EC0E60008778E /* PBXTargetDependency */,
-			);
-			name = "Shot ClockTests";
-			productName = "Shot ClockTests";
-			productReference = 1793B64E205EC0E60008778E /* Shot ClockTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		1793B658205EC0E60008778E /* Shot ClockUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1793B668205EC0E60008778E /* Build configuration list for PBXNativeTarget "Shot ClockUITests" */;
-			buildPhases = (
-				1793B655205EC0E60008778E /* Sources */,
-				1793B656205EC0E60008778E /* Frameworks */,
-				1793B657205EC0E60008778E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1793B65B205EC0E60008778E /* PBXTargetDependency */,
-			);
-			name = "Shot ClockUITests";
-			productName = "Shot ClockUITests";
-			productReference = 1793B659205EC0E60008778E /* Shot ClockUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -352,18 +258,6 @@
 							};
 						};
 					};
-					1793B64D205EC0E60008778E = {
-						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 1793B639205EC0E50008778E;
-					};
-					1793B658205EC0E60008778E = {
-						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 1793B639205EC0E50008778E;
-					};
 				};
 			};
 			buildConfigurationList = 1793B635205EC0E50008778E /* Build configuration list for PBXProject "Shot Clock" */;
@@ -380,8 +274,6 @@
 			projectRoot = "";
 			targets = (
 				1793B639205EC0E50008778E /* Shot Clock */,
-				1793B64D205EC0E60008778E /* Shot ClockTests */,
-				1793B658205EC0E60008778E /* Shot ClockUITests */,
 				1744F97E2071949800FA476A /* Shot Clock Watch */,
 				1744F98A2071949A00FA476A /* Shot Clock Watch Extension */,
 			);
@@ -416,20 +308,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1793B64C205EC0E60008778E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1793B657205EC0E60008778E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -455,22 +333,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1793B64A205EC0E60008778E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1793B653205EC0E60008778E /* Shot_ClockTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1793B655205EC0E60008778E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1793B65E205EC0E60008778E /* Shot_ClockUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -483,16 +345,6 @@
 			isa = PBXTargetDependency;
 			target = 1744F97E2071949800FA476A /* Shot Clock Watch */;
 			targetProxy = 1744F99A2071949A00FA476A /* PBXContainerItemProxy */;
-		};
-		1793B650205EC0E60008778E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1793B639205EC0E50008778E /* Shot Clock */;
-			targetProxy = 1793B64F205EC0E60008778E /* PBXContainerItemProxy */;
-		};
-		1793B65B205EC0E60008778E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1793B639205EC0E50008778E /* Shot Clock */;
-			targetProxy = 1793B65A205EC0E60008778E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -534,14 +386,14 @@
 				DEVELOPMENT_TEAM = 4G9BHF8NH5;
 				IBSC_MODULE = Shot_Clock_Watch_Extension;
 				INFOPLIST_FILE = "Shot Clock Watch/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
 			};
 			name = Debug;
 		};
@@ -555,14 +407,14 @@
 				DEVELOPMENT_TEAM = 4G9BHF8NH5;
 				IBSC_MODULE = Shot_Clock_Watch_Extension;
 				INFOPLIST_FILE = "Shot Clock Watch/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
 			};
 			name = Release;
 		};
@@ -581,7 +433,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
 			};
 			name = Debug;
 		};
@@ -600,7 +452,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
 			};
 			name = Release;
 		};
@@ -654,7 +506,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -707,7 +559,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -747,72 +599,6 @@
 			};
 			name = Release;
 		};
-		1793B666205EC0E60008778E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4G9BHF8NH5;
-				INFOPLIST_FILE = "Shot ClockTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pcarn.Shot-ClockTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shot Clock.app/Shot Clock";
-			};
-			name = Debug;
-		};
-		1793B667205EC0E60008778E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4G9BHF8NH5;
-				INFOPLIST_FILE = "Shot ClockTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pcarn.Shot-ClockTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shot Clock.app/Shot Clock";
-			};
-			name = Release;
-		};
-		1793B669205EC0E60008778E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4G9BHF8NH5;
-				INFOPLIST_FILE = "Shot ClockUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pcarn.Shot-ClockUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Shot Clock";
-			};
-			name = Debug;
-		};
-		1793B66A205EC0E60008778E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4G9BHF8NH5;
-				INFOPLIST_FILE = "Shot ClockUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pcarn.Shot-ClockUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Shot Clock";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -848,24 +634,6 @@
 			buildConfigurations = (
 				1793B663205EC0E60008778E /* Debug */,
 				1793B664205EC0E60008778E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1793B665205EC0E60008778E /* Build configuration list for PBXNativeTarget "Shot ClockTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1793B666205EC0E60008778E /* Debug */,
-				1793B667205EC0E60008778E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1793B668205EC0E60008778E /* Build configuration list for PBXNativeTarget "Shot ClockUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1793B669205EC0E60008778E /* Debug */,
-				1793B66A205EC0E60008778E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
