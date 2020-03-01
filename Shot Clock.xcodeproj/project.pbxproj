@@ -15,6 +15,7 @@
 		1744F9932071949A00FA476A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744F9922071949A00FA476A /* ExtensionDelegate.swift */; };
 		1744F9972071949A00FA476A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1744F9962071949A00FA476A /* Assets.xcassets */; };
 		1744F99C2071949A00FA476A /* Shot Clock Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1744F97F2071949800FA476A /* Shot Clock Watch.app */; };
+		174B4949240C1F5300FEB877 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B4948240C1F5200FEB877 /* UITextField+Extensions.swift */; };
 		17648F83207D788C00116948 /* ShotClockConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */; };
 		1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63D205EC0E50008778E /* AppDelegate.swift */; };
 		1793B640205EC0E50008778E /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63F205EC0E50008778E /* TimerViewController.swift */; };
@@ -78,6 +79,7 @@
 		1744F9922071949A00FA476A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		1744F9962071949A00FA476A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1744F9982071949A00FA476A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		174B4948240C1F5200FEB877 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		1793B63A205EC0E50008778E /* Shot Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shot Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1793B63D205EC0E50008778E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1793B63F205EC0E50008778E /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				1793B644205EC0E50008778E /* Assets.xcassets */,
 				1793B646205EC0E50008778E /* LaunchScreen.storyboard */,
 				1793B649205EC0E50008778E /* Info.plist */,
+				174B4948240C1F5200FEB877 /* UITextField+Extensions.swift */,
 			);
 			path = "Shot Clock";
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				1793B640205EC0E50008778E /* TimerViewController.swift in Sources */,
 				1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */,
 				17BDE7BD206EDB3400958312 /* ShotClockConfiguration.swift in Sources */,
+				174B4949240C1F5300FEB877 /* UITextField+Extensions.swift in Sources */,
 				17CF5775206DE2D100D05E64 /* SettingsViewController.swift in Sources */,
 				172BCEF6207ED83500DAAB07 /* BorderBox.swift in Sources */,
 			);

@@ -151,13 +151,13 @@ class ShotClockConfiguration: NSObject {
 
         case League.custom:
             return Configuration(
-                shotClockLength: 69.0,
-                middleResetAmount: 18.0,
+                shotClockLength: 30.0,
+                middleResetAmount: 20.0,
                 round: "up",
                 showTenthsUnder: -1.0,
                 instructions:
                 """
-                In Custom mode, you can provide your own Shot Clock Length and Middle Reset Amount.
+                In Custom mode, you can provide your own Shot Clock Length and Middle Reset amount.
                 """
             )
         }

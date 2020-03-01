@@ -94,39 +94,39 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     }
 
     @IBAction func customShotClockLengthDidChange(_ sender: UITextField) {
-        if let newShotClockLength = sender.text {
+        if sender.text != nil {
             let numRegex = "^\\d+$"
             let validateNum = NSPredicate(format: "SELF MATCHES %@", numRegex)
-            let validNum = validateNum.evaluate(with: newShotClockLength)
-            if validNum {
-                customShotClockLength = Double(newShotClockLength)!
-                let league = ShotClockConfiguration.League(rawValue: leagueChooser.selectedSegmentIndex)!
-                delegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
-                UserDefaults.standard.set(customShotClockLength, forKey: "customShotClockLength")
-            } else {
+            let validNum = validateNum.evaluate(with: sender.text) && sender.text != "0"
+            if !validNum {
                 sender.text = "30"
             }
         } else {
             sender.text = "30"
         }
+
+        customShotClockLength = Double(sender.text!)!
+        let league = ShotClockConfiguration.League(rawValue: leagueChooser.selectedSegmentIndex)!
+        delegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
+        UserDefaults.standard.set(customShotClockLength, forKey: "customShotClockLength")
     }
 
     @IBAction func middleResetDidChange(_ sender: UITextField) {
-        if let newMiddleResetAmount = sender.text {
+        if sender.text != nil {
             let numRegex = "^\\d+$"
             let validateNum = NSPredicate(format: "SELF MATCHES %@", numRegex)
-            let validNum = validateNum.evaluate(with: newMiddleResetAmount)
-            if validNum {
-                customMiddleResetAmount = Double(newMiddleResetAmount)!
-                let league = ShotClockConfiguration.League(rawValue: leagueChooser.selectedSegmentIndex)!
-                delegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
-                UserDefaults.standard.set(customMiddleResetAmount, forKey: "customMiddleResetAmount")
-            } else {
+            let validNum = validateNum.evaluate(with: sender.text) && sender.text != "0"
+            if !validNum {
                 sender.text = "20"
             }
         } else {
             sender.text = "20"
         }
+
+        customMiddleResetAmount = Double(sender.text!)!
+        let league = ShotClockConfiguration.League(rawValue: leagueChooser.selectedSegmentIndex)!
+        delegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
+        UserDefaults.standard.set(customMiddleResetAmount, forKey: "customMiddleResetAmount")
     }
 
     override func viewDidLoad() {

@@ -31,8 +31,8 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     var recallAmount = -1.0
     var currentLeague = ShotClockConfiguration.League.ncaa
     lazy var config = ShotClockConfiguration.leagueConfiguration(league: currentLeague)
-    var shotClockLength = 0.0
-    var middleResetAmount = 0.0
+    var shotClockLength = 30.0
+    var middleResetAmount = 20.0
 
     enum NotificationType {
         case onTheSecond
@@ -225,18 +225,17 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
             ofSize: timerLabel.font.pointSize,
             weight: UIFont.Weight.light
         )
-
         if let league = ShotClockConfiguration.League(rawValue: UserDefaults.standard.integer(forKey: "leagueSetting")) {
             currentLeague = league
-        }
-        if currentLeague == ShotClockConfiguration.League.custom {
-            let savedShotClockLength = UserDefaults.standard.double(forKey: "customShotClockLength")
-            if savedShotClockLength > 0 {
-                shotClockLength = savedShotClockLength
-            }
-            let savedMiddleResetAmount = UserDefaults.standard.double(forKey: "customMiddleResetAmount")
-            if savedMiddleResetAmount > 0 {
-                middleResetAmount = savedMiddleResetAmount
+            if currentLeague == ShotClockConfiguration.League.custom {
+                let savedShotClockLength = UserDefaults.standard.double(forKey: "customShotClockLength")
+                if savedShotClockLength > 0 {
+                    shotClockLength = savedShotClockLength
+                }
+                let savedMiddleResetAmount = UserDefaults.standard.double(forKey: "customMiddleResetAmount")
+                if savedMiddleResetAmount > 0 {
+                    middleResetAmount = savedMiddleResetAmount
+                }
             }
         }
         changeLeague(selectedLeague: currentLeague, customShotClockLength: shotClockLength, customMiddleResetAmount: middleResetAmount)
