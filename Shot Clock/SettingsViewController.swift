@@ -20,6 +20,11 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBOutlet weak var leagueChooser: UISegmentedControl!
     @IBOutlet weak var sendFeedbackButton: UIButton!
     @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var customShotClockLengthInput: UITextField!
+    @IBOutlet weak var customMiddleResetAmountInput: UITextField!
+
+    var customShotClockLength = 30.0
+    var customMiddleResetAmount = 20.0
 
     @IBAction func closeButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -63,7 +68,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBAction func leagueChanged(_ sender: UISegmentedControl) {
         let league = ShotClockConfiguration.League(rawValue: sender.selectedSegmentIndex)!
         changeLeague(newLeague: league)
-        delegate?.changeLeague(selectedLeague: league)
+        delegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
         UserDefaults.standard.set(sender.selectedSegmentIndex, forKey: "leagueSetting")
     }
 
@@ -71,10 +76,57 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         let config: ShotClockConfiguration.Configuration = ShotClockConfiguration.leagueConfiguration(league: newLeague)
 
         league = newLeague
+        if newLeague == ShotClockConfiguration.League.custom {
+            shotClockLengthLabel.isHidden = true
+            middleResetLabel.isHidden = true
+            customShotClockLengthInput.isHidden = false
+            customMiddleResetAmountInput.isHidden = false
+        } else {
+            shotClockLengthLabel.isHidden = false
+            middleResetLabel.isHidden = false
+            customShotClockLengthInput.isHidden = true
+            customMiddleResetAmountInput.isHidden = true
+        }
         shotClockLengthLabel.text = String(Int(config.shotClockLength))
         middleResetLabel.text = String(Int(config.middleResetAmount))
         instructionTextView.text = config.instructions
         instructionTextView.contentOffset = CGPoint.zero
+    }
+
+    @IBAction func customShotClockLengthDidChange(_ sender: UITextField) {
+        if let newShotClockLength = sender.text {
+            let numRegex = "^\\d+$"
+            let validateNum = NSPredicate(format: "SELF MATCHES %@", numRegex)
+            let validNum = validateNum.evaluate(with: newShotClockLength)
+            if validNum {
+                customShotClockLength = Double(newShotClockLength)!
+                let league = ShotClockConfiguration.League(rawValue: leagueChooser.selectedSegmentIndex)!
+                delegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
+                UserDefaults.standard.set(customShotClockLength, forKey: "customShotClockLength")
+            } else {
+                sender.text = "30"
+            }
+        } else {
+            sender.text = "30"
+        }
+    }
+
+    @IBAction func middleResetDidChange(_ sender: UITextField) {
+        if let newMiddleResetAmount = sender.text {
+            let numRegex = "^\\d+$"
+            let validateNum = NSPredicate(format: "SELF MATCHES %@", numRegex)
+            let validNum = validateNum.evaluate(with: newMiddleResetAmount)
+            if validNum {
+                customMiddleResetAmount = Double(newMiddleResetAmount)!
+                let league = ShotClockConfiguration.League(rawValue: leagueChooser.selectedSegmentIndex)!
+                delegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
+                UserDefaults.standard.set(customMiddleResetAmount, forKey: "customMiddleResetAmount")
+            } else {
+                sender.text = "20"
+            }
+        } else {
+            sender.text = "20"
+        }
     }
 
     override func viewDidLoad() {
@@ -91,9 +143,20 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         if let league = ShotClockConfiguration.League(rawValue: UserDefaults.standard.integer(forKey: "leagueSetting")) {
             changeLeague(newLeague: league)
             leagueChooser.selectedSegmentIndex = league.rawValue
-        } else {
+        } else { // Default
             changeLeague(newLeague: ShotClockConfiguration.League.ncaa)
             leagueChooser.selectedSegmentIndex = ShotClockConfiguration.League.ncaa.rawValue
+        }
+
+        let savedShotClockLength = UserDefaults.standard.double(forKey: "customShotClockLength")
+        if savedShotClockLength > 0 {
+            customShotClockLength = savedShotClockLength
+            customShotClockLengthInput.text = "\(String(format: "%.0f", Darwin.round(savedShotClockLength)))"
+        }
+        let savedMiddleResetAmount = UserDefaults.standard.double(forKey: "customMiddleResetAmount")
+        if savedMiddleResetAmount > 0 {
+            customMiddleResetAmount = savedMiddleResetAmount
+            customMiddleResetAmountInput.text = "\(String(format: "%.0f", Darwin.round(savedMiddleResetAmount)))"
         }
 
         copyrightNotice.text = "Copyright © \(Calendar.current.component(.year, from: Date())) Peter Carnesciali"

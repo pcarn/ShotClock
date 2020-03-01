@@ -10,7 +10,7 @@ import UIKit
 
 class ShotClockConfiguration: NSObject {
     enum League: Int {
-        case ncaa = 0, nba, fiba
+        case ncaa = 0, nba, fiba, custom
     }
 
     struct Configuration {
@@ -146,6 +146,18 @@ class ShotClockConfiguration: NSObject {
 
                 Switched off, after the ball becomes dead and the game clock has been stopped in any period when there is a new control of the ball for either team and there are fewer than 14 seconds on the game clock.
                 The shot clock signal does not stop the game clock or the game, nor causes the ball to become dead, unless a team is in a control of the ball.
+                """
+            )
+
+        case League.custom:
+            return Configuration(
+                shotClockLength: 69.0,
+                middleResetAmount: 18.0,
+                round: "up",
+                showTenthsUnder: -1.0,
+                instructions:
+                """
+                In Custom mode, you can provide your own Shot Clock Length and Middle Reset Amount.
                 """
             )
         }

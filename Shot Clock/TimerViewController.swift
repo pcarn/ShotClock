@@ -10,7 +10,7 @@ import UIKit
 import AudioToolbox
 
 protocol isAbleToSetLeague {
-    func changeLeague(selectedLeague: ShotClockConfiguration.League)
+    func changeLeague(selectedLeague: ShotClockConfiguration.League, customShotClockLength: Double, customMiddleResetAmount: Double)
 }
 
 class TimerViewController: UIViewController, isAbleToSetLeague {
@@ -31,6 +31,8 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     var recallAmount = -1.0
     var currentLeague = ShotClockConfiguration.League.ncaa
     lazy var config = ShotClockConfiguration.leagueConfiguration(league: currentLeague)
+    var shotClockLength = 0.0
+    var middleResetAmount = 0.0
 
     enum NotificationType {
         case onTheSecond
@@ -41,7 +43,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         timer.invalidate()
         self.impactFeedbackGenerator = nil
         recallAmount = currentTime
-        currentTime = config.shotClockLength
+        currentTime = shotClockLength
         updateTimer()
         if !isTimerRunning {
             recallButton.isEnabled = true
@@ -116,7 +118,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
 
     @IBAction func middleResetAmountButtonTapped(_ sender: Any) {
         recallAmount = currentTime
-        currentTime = config.middleResetAmount
+        currentTime = middleResetAmount
         recallButton.isEnabled = true
         recallButton.alpha = 1.0
         updateTimer()
@@ -194,15 +196,23 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         return round(currentTime, toNearest: 0.1) < config.showTenthsUnder
     }
 
-    func changeLeague(selectedLeague: ShotClockConfiguration.League) {
+    func changeLeague(selectedLeague: ShotClockConfiguration.League, customShotClockLength: Double, customMiddleResetAmount: Double) {
         currentLeague = selectedLeague
         config = ShotClockConfiguration.leagueConfiguration(league: currentLeague)
-        middleResetAmountButton.setTitle("\(String(format: "%.0f", Darwin.round(config.middleResetAmount)))s", for: UIControl.State.normal)
-        currentTime = config.shotClockLength
+
+        if (selectedLeague == ShotClockConfiguration.League.custom) {
+            shotClockLength = customShotClockLength
+            middleResetAmount = customMiddleResetAmount
+        } else {
+            shotClockLength = config.shotClockLength
+            middleResetAmount = config.middleResetAmount
+        }
+        middleResetAmountButton.setTitle("\(String(format: "%.0f", Darwin.round(middleResetAmount)))s", for: UIControl.State.normal)
+        currentTime = shotClockLength
         recallAmount = -1.0
         recallButton.isEnabled = false
         recallButton.alpha = 0.3
-        stepper.maximumValue = config.shotClockLength
+        stepper.maximumValue = shotClockLength
         updateTimer()
     }
 
@@ -219,7 +229,17 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         if let league = ShotClockConfiguration.League(rawValue: UserDefaults.standard.integer(forKey: "leagueSetting")) {
             currentLeague = league
         }
-        changeLeague(selectedLeague: currentLeague)
+        if currentLeague == ShotClockConfiguration.League.custom {
+            let savedShotClockLength = UserDefaults.standard.double(forKey: "customShotClockLength")
+            if savedShotClockLength > 0 {
+                shotClockLength = savedShotClockLength
+            }
+            let savedMiddleResetAmount = UserDefaults.standard.double(forKey: "customMiddleResetAmount")
+            if savedMiddleResetAmount > 0 {
+                middleResetAmount = savedMiddleResetAmount
+            }
+        }
+        changeLeague(selectedLeague: currentLeague, customShotClockLength: shotClockLength, customMiddleResetAmount: middleResetAmount)
 
         stepper.minimumValue = 0
         stepper.maximumValue = config.shotClockLength
