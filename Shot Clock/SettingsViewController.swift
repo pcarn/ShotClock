@@ -19,7 +19,6 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBOutlet weak var instructionTextView: UITextView!
     @IBOutlet weak var leagueChooser: UISegmentedControl!
     @IBOutlet weak var sendFeedbackButton: UIButton!
-    @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var customShotClockLengthInput: UITextField!
     @IBOutlet weak var customMiddleResetAmountInput: UITextField!
 
@@ -134,11 +133,13 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         instructionTextView.isScrollEnabled = false
         instructionTextView.isScrollEnabled = true // Setting content offset to zero only works if we do this
 
-        versionLabel.text = "v\(appVersion())"
-
         sendFeedbackButton.layer.borderWidth = 1.0
         sendFeedbackButton.layer.cornerRadius = 8.0
         sendFeedbackButton.layer.borderColor = sendFeedbackButton.currentTitleColor.cgColor
+
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        leagueChooser.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        leagueChooser.setTitleTextAttributes(titleTextAttributes, for: .selected)
 
         if let league = ShotClockConfiguration.League(rawValue: UserDefaults.standard.integer(forKey: "leagueSetting")) {
             changeLeague(newLeague: league)
