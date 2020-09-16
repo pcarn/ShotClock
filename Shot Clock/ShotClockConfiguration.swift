@@ -20,6 +20,23 @@ class ShotClockConfiguration: NSObject {
         let showTenthsUnder: Double
         let instructions: String
     }
+    
+    static func watchLeagueList() -> [[String: Any]] {
+        return [
+            [
+                "title": "NCAA",
+                "league": League.ncaa
+            ],
+            [
+                "title": "NBA",
+                "league": League.nba
+            ],
+            [
+                "title": "FIBA",
+                "league": League.fiba
+            ],
+        ]
+    }
 
     static func leagueConfiguration(league: League) -> Configuration {
         switch league {

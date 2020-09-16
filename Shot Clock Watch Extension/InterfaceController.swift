@@ -10,8 +10,9 @@ import WatchKit
 import Foundation
 
 class InterfaceController: WKInterfaceController, WKCrownDelegate {
-    @IBOutlet var timerLabel: WKInterfaceLabel!
-    @IBOutlet var startStopButton: WKInterfaceButton!
+    @IBOutlet weak var timerLabel: WKInterfaceButton!
+    @IBOutlet weak var startStopButton: WKInterfaceButton!
+    @IBOutlet weak var leaguePicker: WKInterfacePicker!
 
     let monospacedFont = UIFont.monospacedDigitSystemFont(ofSize: 102.0, weight: .regular)
 
@@ -27,16 +28,19 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         case buzzer
     }
 
-    @IBAction func ncaaOptionTapped() {
-        changeLeague(selectedLeague: .ncaa)
+    @IBAction func leaguePickerChanged(_ value: Int) {
+        changeLeague(
+            selectedLeague: ShotClockConfiguration.watchLeagueList()[value]["league"] as! ShotClockConfiguration.League
+        )
+    }
+    
+    func stopPickingLeague() {
+        leaguePicker.resignFocus()
+        crownSequencer.focus()
     }
 
-    @IBAction func nbaOptionTapped() {
-        changeLeague(selectedLeague: .nba)
-    }
-
-    @IBAction func fibaOptionTapped() {
-        changeLeague(selectedLeague: .fiba)
+    @IBAction func timerLabelTapped() {
+        stopPickingLeague()
     }
 
     func changeLeague(selectedLeague: ShotClockConfiguration.League) {
@@ -48,6 +52,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     }
 
     @IBAction func resetButtonTapped() {
+        stopPickingLeague()
         currentTime = config.shotClockLength
         updateTimer()
         if isTimerRunning {
@@ -63,6 +68,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         isTimerRunning = false
         timeStarted = nil
         startStopButton.setTitle("Start")
+        leaguePicker.setEnabled(true)
     }
 
     func startTimer() {
@@ -70,9 +76,11 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         isTimerRunning = true
         timeStarted = Date().addingTimeInterval((config.shotClockLength - currentTime) * -1)
         startStopButton.setTitle("Stop")
+        leaguePicker.setEnabled(false)
     }
 
     @IBAction func startStopButtonTapped() {
+        stopPickingLeague()
         if isTimerRunning {
             stopTimer()
         } else {
@@ -115,7 +123,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
 
     func updateTimer() {
         DispatchQueue.main.async {
-            self.timerLabel.setAttributedText(
+            self.timerLabel.setAttributedTitle(
                 self.monospacedString(string: self.formattedStringForTime(time: self.currentTime))
             )
         }
@@ -170,6 +178,13 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        let pickerItems: [WKPickerItem] = ShotClockConfiguration.watchLeagueList().map {
+            let pickerItem = WKPickerItem()
+            pickerItem.title = $0["title"] as? String
+            return pickerItem
+        }
+        leaguePicker.setItems(pickerItems)
 
         crownSequencer.delegate = self
         crownSequencer.focus()

@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch38" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17156" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch40"/>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14031"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17034"/>
     </dependencies>
     <scenes>
         <!--Shot Clock-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="Shot Clock" hidesWhenLoading="NO" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Shot_Clock_Watch" customModuleProvider="target">
+                <controller identifier="Shot Clock" hidesWhenLoading="NO" fullBounds="YES" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Shot_Clock_Watch" customModuleProvider="target">
                     <items>
-                        <label width="1" height="0.59999999999999998" alignment="center" text="30" textAlignment="center" numberOfLines="0" id="6Jv-QY-MHL">
-                            <color key="textColor" red="0.98823529409999999" green="0.47843137250000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <picker height="0.20000000000000001" alignment="left" focusStyle="stack" id="kc4-Vn-yMw" userLabel="LeaguePicker">
+                            <connections>
+                                <action selector="leaguePickerChanged:" destination="AgC-eL-Hgc" id="nF2-hF-SPY"/>
+                            </connections>
+                        </picker>
+                        <button width="1" height="0.5" alignment="left" title="30" id="6Dn-Uq-u9w" userLabel="Timer Label">
+                            <color key="titleColor" red="0.92246603969999996" green="0.50594776870000002" blue="0.26266568899999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="font" type="system" pointSize="102"/>
-                        </label>
-                        <group width="1" height="0.40000000000000002" alignment="center" verticalAlignment="bottom" id="mJd-uh-ssl">
+                            <connections>
+                                <action selector="timerLabelTapped" destination="AgC-eL-Hgc" id="bPM-nw-05R"/>
+                            </connections>
+                        </button>
+                        <group width="1" height="0.29999999999999999" alignment="center" verticalAlignment="bottom" id="mJd-uh-ssl">
                             <items>
                                 <button width="0.45000000000000001" height="1" alignment="left" title="Reset" id="ALB-BY-hu7">
                                     <connections>
@@ -32,33 +39,20 @@
                                 </button>
                             </items>
                         </group>
+                        <label width="1" height="0.5" alignment="center" hidden="YES" text="30" textAlignment="center" numberOfLines="0" id="6Jv-QY-MHL">
+                            <accessibilityTraits key="accessibilityTraits" notEnabled="YES" updatesFrequently="YES"/>
+                            <color key="textColor" red="0.92246603969999996" green="0.50594776870000002" blue="0.26266568899999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="font" type="system" pointSize="102"/>
+                        </label>
                     </items>
-                    <menu key="menu" id="t8V-F0-bPO">
-                        <items>
-                            <menuItem title="NCAA" icon="more" id="7un-FS-eDF">
-                                <connections>
-                                    <action selector="ncaaOptionTapped" destination="AgC-eL-Hgc" id="aBX-Cp-J6I"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="NBA" icon="more" id="RqG-St-PS5">
-                                <connections>
-                                    <action selector="nbaOptionTapped" destination="AgC-eL-Hgc" id="4sH-p5-zs3"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="FIBA" icon="more" id="UHx-BN-rOc">
-                                <connections>
-                                    <action selector="fibaOptionTapped" destination="AgC-eL-Hgc" id="aPR-Bi-8rS"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
                     <connections>
+                        <outlet property="leaguePicker" destination="kc4-Vn-yMw" id="U8l-MA-dND"/>
                         <outlet property="startStopButton" destination="CoD-Gu-2Gt" id="huI-XD-259"/>
-                        <outlet property="timerLabel" destination="6Jv-QY-MHL" id="V1K-l3-Pzm"/>
+                        <outlet property="timerLabel" destination="6Dn-Uq-u9w" id="OQP-pq-0Ui"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="219.69230769230771" y="344.79487179487182"/>
+            <point key="canvasLocation" x="219.11111111111111" y="370.63451776649742"/>
         </scene>
     </scenes>
 </document>
