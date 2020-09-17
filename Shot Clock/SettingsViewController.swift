@@ -105,6 +105,10 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         }
 
         customShotClockLength = Double(sender.text!)!
+        if customMiddleResetAmount > customShotClockLength {
+            customMiddleResetAmount = customShotClockLength
+            customMiddleResetAmountInput.text = String(Int(customShotClockLength))
+        }
         let league = ShotClockConfiguration.League(rawValue: leagueChooser.selectedSegmentIndex)!
         delegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
         UserDefaults.standard.set(customShotClockLength, forKey: "customShotClockLength")
@@ -123,6 +127,10 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         }
 
         customMiddleResetAmount = Double(sender.text!)!
+        if customMiddleResetAmount > customShotClockLength {
+            customMiddleResetAmount = customShotClockLength
+            sender.text = String(Int(customShotClockLength))
+        }
         let league = ShotClockConfiguration.League(rawValue: leagueChooser.selectedSegmentIndex)!
         delegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
         UserDefaults.standard.set(customMiddleResetAmount, forKey: "customMiddleResetAmount")
@@ -161,7 +169,6 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         }
 
         copyrightNotice.text = "Copyright © \(Calendar.current.component(.year, from: Date())) Peter Carnesciali"
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
