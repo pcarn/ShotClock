@@ -105,6 +105,10 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         }
 
         customShotClockLength = Double(sender.text!)!
+        if customShotClockLength > 99 {
+            customShotClockLength = 99
+            sender.text = String(Int(customShotClockLength))
+        }
         if customMiddleResetAmount > customShotClockLength {
             customMiddleResetAmount = customShotClockLength
             customMiddleResetAmountInput.text = String(Int(customShotClockLength))
