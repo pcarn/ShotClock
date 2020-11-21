@@ -22,6 +22,7 @@
 		1793B643205EC0E50008778E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1793B641205EC0E50008778E /* Main.storyboard */; };
 		1793B645205EC0E50008778E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1793B644205EC0E50008778E /* Assets.xcassets */; };
 		1793B648205EC0E50008778E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1793B646205EC0E50008778E /* LaunchScreen.storyboard */; };
+		17B00660256996AF00C87D72 /* Buzzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0065F256996AF00C87D72 /* Buzzer.swift */; };
 		17BDE7BD206EDB3400958312 /* ShotClockConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */; };
 		17CF5775206DE2D100D05E64 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CF5774206DE2D100D05E64 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		1793B644205EC0E50008778E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1793B647205EC0E50008778E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1793B649205EC0E50008778E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17B0065F256996AF00C87D72 /* Buzzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buzzer.swift; sourceTree = "<group>"; };
 		17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotClockConfiguration.swift; sourceTree = "<group>"; };
 		17CF5774206DE2D100D05E64 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +168,7 @@
 				172BCEF5207ED83500DAAB07 /* BorderBox.swift */,
 				1793B63D205EC0E50008778E /* AppDelegate.swift */,
 				1793B63F205EC0E50008778E /* TimerViewController.swift */,
+				17B0065F256996AF00C87D72 /* Buzzer.swift */,
 				17CF5774206DE2D100D05E64 /* SettingsViewController.swift */,
 				1793B644205EC0E50008778E /* Assets.xcassets */,
 				1793B646205EC0E50008778E /* LaunchScreen.storyboard */,
@@ -331,6 +334,7 @@
 				1793B640205EC0E50008778E /* TimerViewController.swift in Sources */,
 				1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */,
 				17BDE7BD206EDB3400958312 /* ShotClockConfiguration.swift in Sources */,
+				17B00660256996AF00C87D72 /* Buzzer.swift in Sources */,
 				174B4949240C1F5300FEB877 /* UITextField+Extensions.swift in Sources */,
 				17CF5775206DE2D100D05E64 /* SettingsViewController.swift in Sources */,
 				172BCEF6207ED83500DAAB07 /* BorderBox.swift in Sources */,

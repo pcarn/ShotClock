@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AudioToolbox
 
 protocol isAbleToSetLeague {
     func changeLeague(selectedLeague: ShotClockConfiguration.League, customShotClockLength: Double, customMiddleResetAmount: Double)
@@ -25,6 +24,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     @IBOutlet weak var expirationNotice: DesignableView!
 
     var timer = Timer()
+    var buzzer = Buzzer()
     lazy var currentTime = config.shotClockLength
     var isTimerRunning = false
     var impactFeedbackGenerator : UIImpactFeedbackGenerator? = nil
@@ -42,6 +42,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     @IBAction func resetButtonTapped(_ sender: Any) {
         timer.invalidate()
         self.impactFeedbackGenerator = nil
+        buzzer.stopExpirationSound()
         recallAmount = currentTime
         currentTime = shotClockLength
         updateTimer()
@@ -60,6 +61,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     func stopTimer() {
         timer.invalidate()
         isTimerRunning = false
+        buzzer.stopExpirationSound()
         stopButton.isHidden = true
         startButton.isHidden = false
         var controlsToEnable: Array<UIControl> = [stepper, settingsButton]
@@ -161,7 +163,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
                 self.impactFeedbackGenerator?.prepare()
                 self.impactFeedbackGenerator?.impactOccurred()
             } else if type == NotificationType.buzzer {
-                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                self.buzzer.startExpirationSound()
             }
         }
     }
