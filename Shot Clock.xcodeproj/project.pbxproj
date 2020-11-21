@@ -14,7 +14,7 @@
 		1744F9912071949A00FA476A /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744F9902071949A00FA476A /* InterfaceController.swift */; };
 		1744F9932071949A00FA476A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744F9922071949A00FA476A /* ExtensionDelegate.swift */; };
 		1744F9972071949A00FA476A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1744F9962071949A00FA476A /* Assets.xcassets */; };
-		1744F99C2071949A00FA476A /* Shot Clock Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1744F97F2071949800FA476A /* Shot Clock Watch.app */; };
+		1744F99C2071949A00FA476A /* Shot Clock Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1744F97F2071949800FA476A /* Shot Clock Watch.app */; platformFilter = ios; };
 		174B4949240C1F5300FEB877 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B4948240C1F5200FEB877 /* UITextField+Extensions.swift */; };
 		17648F83207D788C00116948 /* ShotClockConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */; };
 		1793B63E205EC0E50008778E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793B63D205EC0E50008778E /* AppDelegate.swift */; };
@@ -81,6 +81,7 @@
 		1744F9962071949A00FA476A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1744F9982071949A00FA476A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		174B4948240C1F5200FEB877 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		174DAF982569C8DE00783122 /* Shot Clock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shot Clock.entitlements"; sourceTree = "<group>"; };
 		1793B63A205EC0E50008778E /* Shot Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shot Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1793B63D205EC0E50008778E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1793B63F205EC0E50008778E /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +164,7 @@
 		1793B63C205EC0E50008778E /* Shot Clock */ = {
 			isa = PBXGroup;
 			children = (
+				174DAF982569C8DE00783122 /* Shot Clock.entitlements */,
 				17BDE7BC206EDB3400958312 /* ShotClockConfiguration.swift */,
 				1793B641205EC0E50008778E /* Main.storyboard */,
 				172BCEF5207ED83500DAAB07 /* BorderBox.swift */,
@@ -351,6 +353,7 @@
 		};
 		1744F99B2071949A00FA476A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 1744F97E2071949800FA476A /* Shot Clock Watch */;
 			targetProxy = 1744F99A2071949A00FA476A /* PBXContainerItemProxy */;
 		};
@@ -391,12 +394,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 4G9BHF8NH5;
 				IBSC_MODULE = Shot_Clock_Watch_Extension;
 				INFOPLIST_FILE = "Shot Clock Watch/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -414,12 +417,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 4G9BHF8NH5;
 				IBSC_MODULE = Shot_Clock_Watch_Extension;
 				INFOPLIST_FILE = "Shot Clock Watch/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -436,7 +439,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 4G9BHF8NH5;
 				INFOPLIST_FILE = "Shot Clock Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -444,7 +447,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -461,7 +464,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 4G9BHF8NH5;
 				INFOPLIST_FILE = "Shot Clock Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -469,7 +472,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -598,9 +601,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Shot Clock/Shot Clock.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 4G9BHF8NH5;
 				INFOPLIST_FILE = "Shot Clock/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -608,10 +612,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -621,9 +626,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Shot Clock/Shot Clock.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 4G9BHF8NH5;
 				INFOPLIST_FILE = "Shot Clock/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -631,10 +637,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcarn.shotclock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
