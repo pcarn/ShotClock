@@ -12,28 +12,62 @@ import UIKit
 
 class Buzzer {
     var expirationSoundPlayer: AVAudioPlayer?
-    let expirationSoundFile = NSDataAsset(name:"BuzzerSound")
+    let expirationSoundFile = NSDataAsset(name: "ExpirationBuzzerSound")
+    var warningSoundPlayer: AVAudioPlayer?
+    let warningSoundFile = NSDataAsset(name: "WarningBuzzerSound")
+    let impactFeedbackGenerator = UIImpactFeedbackGenerator()
     
     init() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        
         if (expirationSoundFile != nil) {
-            do {
-                expirationSoundPlayer = try AVAudioPlayer(data:expirationSoundFile!.data, fileTypeHint: "mp3")
-                expirationSoundPlayer?.prepareToPlay()
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
+            expirationSoundPlayer = createAudioPlayer(data: expirationSoundFile!.data, fileTypeHint: "mp3")
         } else {
-            print("Buzzer sound not found")
+            print("Expiration buzzer sound not found")
+        }
+        if (warningSoundFile != nil) {
+            warningSoundPlayer = createAudioPlayer(data: warningSoundFile!.data, fileTypeHint: "mp3")
+        } else {
+            print("Warning buzzer sound not found")
         }
     }
     
-    func startExpirationSound() {
+    func createAudioPlayer(data: Data, fileTypeHint: String?) -> AVAudioPlayer? {
+        do {
+            let soundPlayer = try AVAudioPlayer(data: data, fileTypeHint: fileTypeHint)
+            soundPlayer.prepareToPlay()
+            return soundPlayer
+        } catch let error as NSError {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    func startExpirationSound(soundEnabled: Bool) {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-        expirationSoundPlayer?.currentTime = 0
-        expirationSoundPlayer?.play()
+        if (soundEnabled) {
+            expirationSoundPlayer?.currentTime = 0
+            expirationSoundPlayer?.play()
+        }
     }
     
     func stopExpirationSound() {
         expirationSoundPlayer?.stop()
+    }
+    
+    func startWarningSound(soundEnabled: Bool) {
+        impactFeedbackGenerator.impactOccurred()
+        if (soundEnabled) {
+            warningSoundPlayer?.currentTime = 0
+            warningSoundPlayer?.play()
+        }
+    }
+    
+    func stopWarningSound() {
+        warningSoundPlayer?.stop()
     }
 }

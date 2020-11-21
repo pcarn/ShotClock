@@ -12,7 +12,12 @@ protocol isAbleToSetLeague {
     func changeLeague(selectedLeague: ShotClockConfiguration.League, customShotClockLength: Double, customMiddleResetAmount: Double)
 }
 
-class TimerViewController: UIViewController, isAbleToSetLeague {
+protocol isAbleToChangeBuzzerSettings {
+    func setWarningBuzzerSoundEnabled(enabled: Bool)
+    func setExpirationBuzzerSoundEnabled(enabled: Bool)
+}
+
+class TimerViewController: UIViewController, isAbleToSetLeague, isAbleToChangeBuzzerSettings {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var stopButton: UIControl!
     @IBOutlet weak var startButton: UIControl!
@@ -23,25 +28,27 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     @IBOutlet weak var recallButton: UIButton!
     @IBOutlet weak var expirationNotice: DesignableView!
 
+    let warningBuzzerSoundAt = 5.0
+    
     var timer = Timer()
     var buzzer = Buzzer()
     lazy var currentTime = config.shotClockLength
     var isTimerRunning = false
-    var impactFeedbackGenerator : UIImpactFeedbackGenerator? = nil
     var recallAmount = -1.0
     var currentLeague = ShotClockConfiguration.League.ncaa
     lazy var config = ShotClockConfiguration.leagueConfiguration(league: currentLeague)
     var shotClockLength = 30.0
     var middleResetAmount = 20.0
+    var warningBuzzerSoundEnabled = true
+    var expirationBuzzerSoundEnabled = true
 
     enum NotificationType {
-        case onTheSecond
-        case buzzer
+        case warning
+        case expiration
     }
     
     @IBAction func resetButtonTapped(_ sender: Any) {
         timer.invalidate()
-        self.impactFeedbackGenerator = nil
         buzzer.stopExpirationSound()
         recallAmount = currentTime
         currentTime = shotClockLength
@@ -72,7 +79,6 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
             control.isEnabled = true
             control.alpha = 1.0
         }
-        self.impactFeedbackGenerator = nil
 
     }
 
@@ -144,26 +150,28 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
         if roundedTime <= 0 {
             currentTime = 0 // To prevent "-0.0"
             timer.invalidate()
-            generateFeedback(type: NotificationType.buzzer)
+            generateFeedback(type: NotificationType.expiration)
+        } else if roundedTime <= warningBuzzerSoundAt && roundedTime.truncatingRemainder(dividingBy: 1) == 0 {
+                generateFeedback(type: NotificationType.warning)
         }
-
+        
         updateTimer()
-        if roundedTime <= config.showTenthsUnder && roundedTime.truncatingRemainder(dividingBy: 1) == 0 {
-            generateFeedback(type: NotificationType.onTheSecond)
-        }
-
+    }
+    
+    func setWarningBuzzerSoundEnabled(enabled: Bool) {
+        warningBuzzerSoundEnabled = enabled
+    }
+    
+    func setExpirationBuzzerSoundEnabled(enabled: Bool) {
+        expirationBuzzerSoundEnabled = enabled
     }
 
     func generateFeedback(type: NotificationType) {
         DispatchQueue.main.async {
-            if type == NotificationType.onTheSecond {
-                if self.impactFeedbackGenerator == nil {
-                    self.impactFeedbackGenerator = UIImpactFeedbackGenerator()
-                }
-                self.impactFeedbackGenerator?.prepare()
-                self.impactFeedbackGenerator?.impactOccurred()
-            } else if type == NotificationType.buzzer {
-                self.buzzer.startExpirationSound()
+            if type == NotificationType.warning {
+                self.buzzer.startWarningSound(soundEnabled: self.warningBuzzerSoundEnabled)
+            } else if type == NotificationType.expiration {
+                self.buzzer.startExpirationSound(soundEnabled: self.expirationBuzzerSoundEnabled)
             }
         }
     }
@@ -257,7 +265,8 @@ class TimerViewController: UIViewController, isAbleToSetLeague {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is SettingsViewController {
             let newViewController = segue.destination as! SettingsViewController
-            newViewController.delegate = self
+            newViewController.leagueSettingsDelegate = self
+            newViewController.buzzerSettingsDelegate = self
         }
     }
 }

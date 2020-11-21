@@ -10,7 +10,8 @@ import UIKit
 import MessageUI
 
 class SettingsViewController: UIViewController, MFMailComposeViewControllerDelegate {
-    var delegate: isAbleToSetLeague?
+    var leagueSettingsDelegate: isAbleToSetLeague?
+    var buzzerSettingsDelegate: isAbleToChangeBuzzerSettings?
     var league: ShotClockConfiguration.League?
 
     @IBOutlet weak var shotClockLengthLabel: UILabel!
@@ -21,9 +22,14 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBOutlet weak var sendFeedbackButton: UIButton!
     @IBOutlet weak var customShotClockLengthInput: UITextField!
     @IBOutlet weak var customMiddleResetAmountInput: UITextField!
-
+    @IBOutlet weak var warningBuzzerSoundEnabledSwitch: UISwitch!
+    @IBOutlet weak var expirationBuzzerSoundEnabledSwitch: UISwitch!
+    
     var customShotClockLength = 30.0
     var customMiddleResetAmount = 20.0
+    
+    var warningBuzzerSoundEnabled = true
+    var expirationBuzzerSoundEnabled = true
 
     @IBAction func closeButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -67,7 +73,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBAction func leagueChanged(_ sender: UISegmentedControl) {
         let league = ShotClockConfiguration.League(rawValue: sender.selectedSegmentIndex)!
         changeLeague(newLeague: league)
-        delegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
+        leagueSettingsDelegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
         UserDefaults.standard.set(sender.selectedSegmentIndex, forKey: "leagueSetting")
     }
 
@@ -114,7 +120,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
             customMiddleResetAmountInput.text = String(Int(customShotClockLength))
         }
         let league = ShotClockConfiguration.League(rawValue: leagueChooser.selectedSegmentIndex)!
-        delegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
+        leagueSettingsDelegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
         UserDefaults.standard.set(customShotClockLength, forKey: "customShotClockLength")
     }
 
@@ -136,8 +142,18 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
             sender.text = String(Int(customShotClockLength))
         }
         let league = ShotClockConfiguration.League(rawValue: leagueChooser.selectedSegmentIndex)!
-        delegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
+        leagueSettingsDelegate?.changeLeague(selectedLeague: league, customShotClockLength: customShotClockLength, customMiddleResetAmount: customMiddleResetAmount)
         UserDefaults.standard.set(customMiddleResetAmount, forKey: "customMiddleResetAmount")
+    }
+    
+    @IBAction func warningBuzzerSoundEnabledChanged(_ sender: UISwitch) {
+        buzzerSettingsDelegate?.setWarningBuzzerSoundEnabled(enabled: sender.isOn)
+        UserDefaults.standard.set(sender.isOn, forKey: "warningBuzzerSoundEnabled")
+    }
+    
+    @IBAction func expirationBuzzerSoundEnabledChanged(_ sender: UISwitch) {
+        buzzerSettingsDelegate?.setExpirationBuzzerSoundEnabled(enabled: sender.isOn)
+        UserDefaults.standard.set(sender.isOn, forKey: "expirationBuzzerSoundEnabled")
     }
 
     override func viewDidLoad() {
@@ -171,6 +187,14 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
             customMiddleResetAmount = savedMiddleResetAmount
             customMiddleResetAmountInput.text = "\(String(format: "%.0f", Darwin.round(savedMiddleResetAmount)))"
         }
+        
+        let warningBuzzerSoundEnabled = UserDefaults.standard.bool(forKey: "warningBuzzerSoundEnabled")
+        buzzerSettingsDelegate?.setWarningBuzzerSoundEnabled(enabled: warningBuzzerSoundEnabled)
+        warningBuzzerSoundEnabledSwitch.isOn = warningBuzzerSoundEnabled
+        
+        let expirationBuzzerSoundEnabled = UserDefaults.standard.bool(forKey: "expirationBuzzerSoundEnabled")
+        buzzerSettingsDelegate?.setExpirationBuzzerSoundEnabled(enabled: expirationBuzzerSoundEnabled)
+        expirationBuzzerSoundEnabledSwitch.isOn = expirationBuzzerSoundEnabled
 
         copyrightNotice.text = "Copyright © \(Calendar.current.component(.year, from: Date())) Peter Carnesciali"
     }
