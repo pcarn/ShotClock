@@ -188,13 +188,17 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
             customMiddleResetAmountInput.text = "\(String(format: "%.0f", Darwin.round(savedMiddleResetAmount)))"
         }
         
-        let warningBuzzerSoundEnabled = UserDefaults.standard.bool(forKey: "warningBuzzerSoundEnabled")
-        buzzerSettingsDelegate?.setWarningBuzzerSoundEnabled(enabled: warningBuzzerSoundEnabled)
-        warningBuzzerSoundEnabledSwitch.isOn = warningBuzzerSoundEnabled
+        if let warningBuzzerSoundConfig = UserDefaults.standard.object(forKey: "warningBuzzerSoundEnabled") {
+            let warningBuzzerSoundEnabled = warningBuzzerSoundConfig as! Bool
+            buzzerSettingsDelegate?.setWarningBuzzerSoundEnabled(enabled: warningBuzzerSoundEnabled)
+            warningBuzzerSoundEnabledSwitch.isOn = warningBuzzerSoundEnabled
+        }
         
-        let expirationBuzzerSoundEnabled = UserDefaults.standard.bool(forKey: "expirationBuzzerSoundEnabled")
-        buzzerSettingsDelegate?.setExpirationBuzzerSoundEnabled(enabled: expirationBuzzerSoundEnabled)
-        expirationBuzzerSoundEnabledSwitch.isOn = expirationBuzzerSoundEnabled
+        if let expirationBuzzerSoundConfig = UserDefaults.standard.object(forKey: "expirationBuzzerSoundEnabled") {
+            let expirationBuzzerSoundEnabled = expirationBuzzerSoundConfig as! Bool
+            buzzerSettingsDelegate?.setExpirationBuzzerSoundEnabled(enabled: expirationBuzzerSoundEnabled)
+            expirationBuzzerSoundEnabledSwitch.isOn = expirationBuzzerSoundEnabled
+        }
 
         copyrightNotice.text = "Copyright © \(Calendar.current.component(.year, from: Date())) Peter Carnesciali"
     }

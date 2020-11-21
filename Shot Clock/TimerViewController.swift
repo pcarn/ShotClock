@@ -250,6 +250,14 @@ class TimerViewController: UIViewController, isAbleToSetLeague, isAbleToChangeBu
         }
         changeLeague(selectedLeague: currentLeague, customShotClockLength: shotClockLength, customMiddleResetAmount: middleResetAmount)
 
+        if let warningBuzzerSoundConfig = UserDefaults.standard.object(forKey: "warningBuzzerSoundEnabled") {
+            warningBuzzerSoundEnabled = warningBuzzerSoundConfig as! Bool
+        }
+
+        if let expirationBuzzerSoundConfig = UserDefaults.standard.object(forKey: "expirationBuzzerSoundEnabled") {
+            expirationBuzzerSoundEnabled = expirationBuzzerSoundConfig as! Bool
+        }
+
         stepper.minimumValue = 0
         stepper.maximumValue = shotClockLength
         stepper.stepValue = 0.1
