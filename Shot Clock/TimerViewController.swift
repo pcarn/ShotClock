@@ -32,13 +32,13 @@ class TimerViewController: UIViewController, isAbleToSetLeague, isAbleToChangeBu
     
     var timer = Timer()
     var buzzer = Buzzer()
-    lazy var currentTime = config.shotClockLength
     var isTimerRunning = false
     var recallAmount = -1.0
     var currentLeague = ShotClockConfiguration.League.ncaa
     lazy var config = ShotClockConfiguration.leagueConfiguration(league: currentLeague)
     var shotClockLength = 30.0
     var middleResetAmount = 20.0
+    lazy var currentTime = shotClockLength
     var warningBuzzerSoundEnabled = true
     var expirationBuzzerSoundEnabled = true
 
@@ -108,7 +108,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague, isAbleToChangeBu
             let roundedTime = self.round(currentTime, toNearest: 0.1)
             let flooredTime = config.round == "down" ? floor(roundedTime) : ceil(roundedTime)
             currentTime = flooredTime + (sender.value < currentTime ? -1.0 : 1.0)
-            currentTime = [config.shotClockLength, currentTime].min()!
+            currentTime = [shotClockLength, currentTime].min()!
         }
 
         updateTimer()
@@ -251,7 +251,7 @@ class TimerViewController: UIViewController, isAbleToSetLeague, isAbleToChangeBu
         changeLeague(selectedLeague: currentLeague, customShotClockLength: shotClockLength, customMiddleResetAmount: middleResetAmount)
 
         stepper.minimumValue = 0
-        stepper.maximumValue = config.shotClockLength
+        stepper.maximumValue = shotClockLength
         stepper.stepValue = 0.1
         updateTimer()
 
