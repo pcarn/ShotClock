@@ -22,6 +22,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     var timeStarted:Date?
     var currentLeague = ShotClockConfiguration.League.ncaa
     lazy var config = ShotClockConfiguration.leagueConfiguration(league: currentLeague)
+    var autorotateExtension = WKExtension.shared()
 
     enum NotificationType {
         case onTheSecond
@@ -69,6 +70,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         timeStarted = nil
         startStopButton.setTitle("Start")
         leaguePicker.setEnabled(true)
+        autorotateExtension.isAutorotating = false
     }
 
     func startTimer() {
@@ -77,6 +79,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         timeStarted = Date().addingTimeInterval((config.shotClockLength - currentTime) * -1)
         startStopButton.setTitle("Stop")
         leaguePicker.setEnabled(false)
+        autorotateExtension.isAutorotating = true
     }
 
     @IBAction func startStopButtonTapped() {
