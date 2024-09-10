@@ -54,41 +54,51 @@ class ShotClockConfiguration: NSObject {
                         b. Jump ball.
                         c. Loose ball after a rebound or jump ball.
                     2. An official signals that an inbounds player legally touches the ball on a throw-in after it has been released.
-
-                STOP shot clock when an official’s whistle sounds.
-
-                FULL RESET to 30 seconds when:
-                    1. There is a change of possession with a new team in control or when team control is re-established after the team loses control.
-                    2. There is a single personal foul.
-                    3. A double foul when one foul is flagrant.
-                    4. There is a single technical foul on the defensive team.
-                    5. A try/shot (not a pass) hits the rim or flange and either team gains possession of the ball.
-                    6. There is a violation (except a kicking or fisting violation).
-                    7. There is an inadvertent whistle with no team control.
-                    8. There is a held ball and the arrow favors the defensive team.
-
-                RESET to 20 seconds or the time remaining on the shot clock, whichever is greater, when
-                    1. There is a personal foul against the defensive team and the ball is to be inbounded by the offense in the front court.
-                    2. There is a technical foul committed by the defensive team and the ball is to be inbounded in the front court by the offense.
-                    3. There is a kicked or fisted ball by the defensive team and the ball is to be inbounded in the front court by the offense.
-
-
-                NO RESET when:
+                
+                STOP shot clock when an official’s whistle sounds or the official signals to stop the clock.
+                
+                NO RESET when there is team control and:
                     1. The offense retains possession after the following:
                         a. A held ball.
                         b. An out-of-bounds violation.
                     2. There is an intentionally kicked or fisted ball with 20 seconds or more on the shot clock.
                     3. There is an injured player or a player loses a contact lens.
                     4. There is a timeout.
-                    5. A double foul occurs (except when one of the fouls is flagrant).
+                    5. A double personal or technical foul occurs when there is team control(unless the penalty for the foul results in a change of possession).
                     6. There is a technical foul on the offensive team.
                     7. There is an inadvertent whistle when there is team control.
-
+                    8. After a simultaneous held ball occurs during a throw-in or after an unsuccessful try that does not contact the rim and the A.P. arrow favors the team whose try was unsuccessful.
+                    9. After the ball goes out of bounds and was last touched simultaneously by two opponents, both of whom are either in bounds or out of bounds.
+                
+                FULL RESET to 30 seconds when:
+                    1. There is a change of possession with a new team in control and the ball remains live or when team control is re-established in the backcourt after the team loses control or after a score by the opponent.
+                    2. There is a single personal or technical foul assessed to the defensive team while the offensive team is in control in its backcourt.
+                    3. There is a double foul when only one foul is flagrant and it is assessed against the offense in its front court.
+                    4. A try/shot (not a pass) hits the rim or flange and control is gained by the non-shooting team.
+                    5. There is a violation (except a kicking or fisting violation or the defense causing the ball to be out of bounds and the ball is awarded to the defense in the backcourt.
+                    6. There is an inadvertent whistle with no team control and the ball is awarded to either team in its backcourt.
+                    7. There is a held ball or any other situation occurs where the AP arrow determines possession and the arrow favors the defensive team with a throw-in in its backcourt.
+                
+                RESET to 20 seconds or the time remaining on the shot clock, whichever is greater, when:
+                    1. There is a personal or technical foul committed by the defensive team prior to a try for goal which hits the ring or flange and the ball is to be inbounded in the front court by the offense.
+                    2. There is a kicked or fisted ball by the defensive team and the ball is to be inbounded in the front court by the offense.
+                    3. There is an inadvertent whistle when there was no player or team possession and the AP arrow favors either team for a throw-in in its front court.
+                
+                RESET to 20 seconds when:
+                    1. The offense gains control of the ball in their front court after an unsuccessful field goal attempt that contacts the ring or flange.
+                    2. The offense gains control of the ball in their front court after an unsuccessful free throw that remains in play.
+                    3. The defense is assessed a loose ball foul after an unsuccessful free throw that remains in play, or an unsuccessful field goal that contacts the ring or flange, or during a successful try provided that the offensive team will inbound the ball in the front court.
+                    4. After the defense causes the ball to be out of bounds in the front court following an unsuccessful free throw or an unsuccessful field goal attempt that contacts the ring or flange.
+                    5. When there is no team control, after the offense is awarded possession in their front court when the alternating possession arrow favors the offense following an unsuccessful free throw that remains in play, an unsuccessful field goal that hits the rim or an Instant Replay for basket interference/goaltending. Exception-Rule 2-11.6.b.8
+                    6. There is a kicked or fisted ball in the backcourt by the defense with 19 seconds or less remaining.
+                    7. A violation occurs, other than an opponent causing the ball to be out of bounds or kicking the ball, and the defense is awarded the ball in its front court.
+                    8. After any double personal foul when only one of the fouls is flagrant, and it is assessed against the offense and the defense is awarded possession in its front court.
+                
                 ALLOW shot clock to run:
-                    1. During loose ball situations.
-                    2. During a try for goal.
-
-                TURN OFF shot clock when there is a reset situation and there is less than 30 seconds remaining on the game clock.
+                    1. During loose ball situations when the offense retains control.
+                    2. During a try for goal that fails to hit the ring or flange.
+                
+                TURN OFF shot clock when there is a reset situation and there are less than 30 seconds remaining on the game clock. Reactivate the shot-clock to 20 seconds when any of the situations in Rule 2-11.6.d occur.
                 """
             )
         case League.nba:
