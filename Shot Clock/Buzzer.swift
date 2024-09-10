@@ -15,7 +15,6 @@ class Buzzer {
     let expirationSoundFile = NSDataAsset(name: "ExpirationBuzzerSound")
     var warningSoundPlayer: AVAudioPlayer?
     let warningSoundFile = NSDataAsset(name: "WarningBuzzerSound")
-    let impactFeedbackGenerator = UIImpactFeedbackGenerator()
     
     init() {
         do {
@@ -59,7 +58,8 @@ class Buzzer {
         expirationSoundPlayer?.stop()
     }
     
-    func startWarningSound(soundEnabled: Bool) {
+    @MainActor func startWarningSound(soundEnabled: Bool) {
+        let impactFeedbackGenerator = UIImpactFeedbackGenerator()
         impactFeedbackGenerator.impactOccurred()
         if (soundEnabled) {
             warningSoundPlayer?.currentTime = 0

@@ -17,7 +17,7 @@ protocol isAbleToChangeBuzzerSettings {
     func setExpirationBuzzerSoundEnabled(enabled: Bool)
 }
 
-class TimerViewController: UIViewController, isAbleToSetLeague, isAbleToChangeBuzzerSettings {
+class TimerViewController: UIViewController, @preconcurrency isAbleToSetLeague, @preconcurrency isAbleToChangeBuzzerSettings {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var stopButton: UIControl!
     @IBOutlet weak var startButton: UIControl!
