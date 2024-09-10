@@ -44,8 +44,8 @@ class ShotClockConfiguration: NSObject {
             return Configuration(
                 shotClockLength: 30.0,
                 middleResetAmount: 20.0,
-                round: "up",
-                showTenthsUnder: -1.0,
+                round: "down",
+                showTenthsUnder: 5.0,
                 instructions:
                 """
                 START shot clock when:
@@ -132,8 +132,8 @@ class ShotClockConfiguration: NSObject {
             return Configuration(
                 shotClockLength: 24.0,
                 middleResetAmount: 14.0,
-                round: "up",
-                showTenthsUnder: -1.0,
+                round: "down",
+                showTenthsUnder: 5.0,
                 instructions:
                 """
                 The shot clock shall be:
@@ -180,8 +180,8 @@ class ShotClockConfiguration: NSObject {
             return Configuration(
                 shotClockLength: 30.0,
                 middleResetAmount: 20.0,
-                round: "up",
-                showTenthsUnder: -1.0,
+                round: "down",
+                showTenthsUnder: 5.0,
                 instructions:
                 """
                 In Custom mode, you can provide your own Shot Clock Length and Middle Reset amount.
