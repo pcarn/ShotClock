@@ -3,14 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		172BCEF6207ED83500DAAB07 /* BorderBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BCEF5207ED83500DAAB07 /* BorderBox.swift */; };
 		1744F9832071949900FA476A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1744F9812071949800FA476A /* Interface.storyboard */; };
 		1744F9852071949A00FA476A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1744F9842071949A00FA476A /* Assets.xcassets */; };
-		1744F98C2071949A00FA476A /* Shot Clock Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1744F98B2071949A00FA476A /* Shot Clock Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1744F98C2071949A00FA476A /* Shot Clock Watch Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1744F98B2071949A00FA476A /* Shot Clock Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1744F9912071949A00FA476A /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744F9902071949A00FA476A /* InterfaceController.swift */; };
 		1744F9932071949A00FA476A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744F9922071949A00FA476A /* ExtensionDelegate.swift */; };
 		1744F9972071949A00FA476A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1744F9962071949A00FA476A /* Assets.xcassets */; };
@@ -45,15 +45,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1744F9A22071949A00FA476A /* Embed App Extensions */ = {
+		1744F9A22071949A00FA476A /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				1744F98C2071949A00FA476A /* Shot Clock Watch Extension.appex in Embed App Extensions */,
+				1744F98C2071949A00FA476A /* Shot Clock Watch Extension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1744F9A42071949A00FA476A /* Embed Watch Content */ = {
@@ -188,7 +188,7 @@
 			buildConfigurationList = 1744F9A32071949A00FA476A /* Build configuration list for PBXNativeTarget "Shot Clock Watch" */;
 			buildPhases = (
 				1744F97D2071949800FA476A /* Resources */,
-				1744F9A22071949A00FA476A /* Embed App Extensions */,
+				1744F9A22071949A00FA476A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -242,9 +242,10 @@
 		1793B632205EC0E50008778E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = ShotClock;
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1600;
 				ORGANIZATIONNAME = "Peter Carnesciali";
 				TargetAttributes = {
 					1744F97E2071949800FA476A = {
@@ -269,7 +270,6 @@
 				};
 			};
 			buildConfigurationList = 1793B635205EC0E50008778E /* Build configuration list for PBXProject "Shot Clock" */;
-			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -277,6 +277,7 @@
 				Base,
 			);
 			mainGroup = 1793B631205EC0E50008778E;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = 1793B63B205EC0E50008778E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -390,7 +391,6 @@
 		1744F99D2071949A00FA476A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -413,7 +413,6 @@
 		1744F99E2071949A00FA476A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -487,6 +486,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -520,6 +520,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -547,6 +548,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -580,6 +582,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
